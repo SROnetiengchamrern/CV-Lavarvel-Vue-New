@@ -1,5 +1,6 @@
 <script setup>
 import { computed, watchEffect } from 'vue';
+import LangFlag from './partials/LangFlag.vue';
 
 const props = defineProps({
     letter: { type: Object, required: true },
@@ -57,7 +58,8 @@ function switchLocale(code) {
                         :class="{ active: locale === code }"
                         @click="switchLocale(code)"
                     >
-                        {{ label }}
+                        <LangFlag :code="code" />
+                        <span>{{ label }}</span>
                     </button>
                 </div>
                 <button type="button" @click="printLetter">{{ ui.print_pdf || 'Print / PDF' }}</button>
@@ -139,10 +141,13 @@ function switchLocale(code) {
 .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
 .lang-switch { display: inline-flex; gap: 0.3rem; }
 .lang-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
     border: 1px solid #cfd5e2 !important;
     background: #fff !important;
     color: #1a1a4b !important;
-    padding: 0.4rem 0.75rem !important;
+    padding: 0.4rem 0.8rem !important;
     font-size: 0.78rem !important;
 }
 .lang-chip.active {

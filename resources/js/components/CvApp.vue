@@ -7,6 +7,7 @@ import MinimalLayout from './layouts/MinimalLayout.vue';
 import MirrorLayout from './layouts/MirrorLayout.vue';
 import CvCertificateGallery from './partials/CvCertificateGallery.vue';
 import CvDocViewer from './partials/CvDocViewer.vue';
+import LangFlag from './partials/LangFlag.vue';
 
 const props = defineProps({
     cv: {
@@ -68,7 +69,8 @@ function switchLocale(code) {
                     :class="{ active: locale === code }"
                     @click="switchLocale(code)"
                 >
-                    {{ label }}
+                    <LangFlag :code="code" />
+                    <span>{{ label }}</span>
                 </button>
             </div>
             <div class="toolbar-actions">
@@ -99,7 +101,7 @@ function switchLocale(code) {
 
 <style scoped>
 .page-wrap {
-    padding: 2rem 1rem 3rem;
+    padding: 1.25rem 1rem 2.5rem;
     overflow-x: hidden;
     min-width: 0;
 }
@@ -115,11 +117,14 @@ function switchLocale(code) {
 }
 
 .lang-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     border: 1px solid #cfd5e2;
     background: #fff;
     color: #1a1a4b;
     border-radius: 999px;
-    padding: 0.35rem 0.7rem;
+    padding: 0.35rem 0.8rem;
     font: inherit;
     font-size: 0.75rem;
     font-weight: 600;

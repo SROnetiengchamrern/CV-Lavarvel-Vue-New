@@ -72,3 +72,34 @@ html.locale-km .cv-heading {
     min-height: 100vh;
     overflow-x: hidden;
 }
+
+@media print {
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    html,
+    body {
+        background: #fff !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .sheet {
+        max-width: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    .panel,
+    .skill-group,
+    .intro,
+    .aws-item,
+    .timeline > li {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
