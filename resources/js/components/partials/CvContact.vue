@@ -11,6 +11,7 @@ const emailIcon = '/images/icons/email.png';
 const phoneIcon = '/images/icons/phone.png';
 const telegramIcon = '/images/icons/telegram.png';
 const facebookIcon = '/images/icons/facebook.png';
+const addressIcon = '/images/icons/address.png';
 
 function displayTelegram(value) {
     if (!value) return '';
@@ -78,7 +79,10 @@ function displayFacebook(value) {
                 <a :href="profile.facebook_url" target="_blank" rel="noopener">{{ displayFacebook(profile.facebook) }}</a>
             </li>
             <li v-if="profile.address">
-                <span class="label">{{ labels.address || 'Address' }}</span>
+                <span class="label">
+                    <img class="social-icon" :src="addressIcon" alt="" width="14" height="14" />
+                    {{ labels.address || 'Address' }}
+                </span>
                 <span>{{ profile.address }}</span>
             </li>
         </ul>
