@@ -65,6 +65,14 @@
                     <input type="text" name="phone_secondary" value="{{ old('phone_secondary', $profile->phone_secondary) }}">
                 </div>
                 <div class="field">
+                    <label>Telegram</label>
+                    <input type="text" name="telegram" value="{{ old('telegram', $profile->telegram) }}" placeholder="@username or https://t.me/...">
+                </div>
+                <div class="field">
+                    <label>Facebook</label>
+                    <input type="text" name="facebook" value="{{ old('facebook', $profile->facebook) }}" placeholder="username or https://facebook.com/...">
+                </div>
+                <div class="field">
                     <label>Address (English)</label>
                     <input type="text" name="address" value="{{ old('address', $profile->address) }}">
                 </div>

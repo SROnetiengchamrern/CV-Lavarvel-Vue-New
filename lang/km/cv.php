@@ -34,6 +34,8 @@ return [
     'name' => 'ឈ្មោះ',
     'email' => 'អ៊ីមែល',
     'tel' => 'ទូរស័ព្ទ',
+    'telegram' => 'Telegram',
+    'facebook' => 'Facebook',
     'address' => 'អាសយដ្ឋាន',
     'edit' => 'កែប្រែ',
     'open_tab' => 'បើកផ្ទាំងថ្មី',

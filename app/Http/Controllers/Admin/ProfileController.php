@@ -34,6 +34,8 @@ class ProfileController extends Controller
             'email' => ['nullable', 'email', 'max:255'],
             'phone_primary' => ['nullable', 'string', 'max:50'],
             'phone_secondary' => ['nullable', 'string', 'max:50'],
+            'telegram' => ['nullable', 'string', 'max:255'],
+            'facebook' => ['nullable', 'string', 'max:255'],
             'address' => ['nullable', 'string', 'max:255'],
             'address_km' => ['nullable', 'string', 'max:255'],
             'gender' => ['nullable', 'string', 'max:50'],

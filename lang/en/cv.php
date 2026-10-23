@@ -34,6 +34,8 @@ return [
     'name' => 'Name',
     'email' => 'E-mail',
     'tel' => 'Tel',
+    'telegram' => 'Telegram',
+    'facebook' => 'Facebook',
     'address' => 'Address',
     'edit' => 'Edit',
     'open_tab' => 'Open tab',

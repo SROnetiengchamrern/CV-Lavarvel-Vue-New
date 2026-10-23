@@ -15,6 +15,8 @@ class Profile extends Model
         'email',
         'phone_primary',
         'phone_secondary',
+        'telegram',
+        'facebook',
         'address',
         'address_km',
         'gender',

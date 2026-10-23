@@ -35,6 +35,10 @@ class CvLocalizer
             'email' => $profile->email,
             'phone_primary' => $profile->phone_primary,
             'phone_secondary' => $profile->phone_secondary,
+            'telegram' => $profile->telegram,
+            'telegram_url' => self::telegramUrl($profile->telegram),
+            'facebook' => $profile->facebook,
+            'facebook_url' => self::facebookUrl($profile->facebook),
             'address' => Locale::pick($profile->address, $profile->address_km),
             'gender' => Locale::pick($profile->gender, $profile->gender_km),
             'date_of_birth' => $profile->date_of_birth,
@@ -169,6 +173,34 @@ class CvLocalizer
             'badge_color' => $item->badge_color,
             'certificates' => $item->certificates,
         ])->values();
+    }
+
+    public static function telegramUrl(?string $value): ?string
+    {
+        if (blank($value)) {
+            return null;
+        }
+
+        $value = trim($value);
+        if (str_starts_with($value, 'http://') || str_starts_with($value, 'https://')) {
+            return $value;
+        }
+
+        return 'https://t.me/'.ltrim($value, '@');
+    }
+
+    public static function facebookUrl(?string $value): ?string
+    {
+        if (blank($value)) {
+            return null;
+        }
+
+        $value = trim($value);
+        if (str_starts_with($value, 'http://') || str_starts_with($value, 'https://')) {
+            return $value;
+        }
+
+        return 'https://facebook.com/'.ltrim($value, '@/');
     }
 
     /**

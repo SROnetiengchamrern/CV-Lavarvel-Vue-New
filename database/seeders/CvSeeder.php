@@ -32,23 +32,25 @@ class CvSeeder extends Seeder
         Profile::create([
             'full_name' => 'Tieng Chamrern',
             'full_name_km' => 'ទៀង​ ចំរើន',
-            'title' => 'Web Developer',
-            'title_km' => 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ',
+            'title' => 'Full Stack Developer',
+            'title_km' => 'Full Stack Developer',
             'photo' => 'images/profile.jpg',
-            'email' => 'tiengchamrern@gmail.com',
-            'phone_primary' => '096 6666 819',
+            'email' => 'tiengchamrern2@gmail.com',
+            'phone_primary' => '096 779 7762',
             'phone_secondary' => '081 6666 819',
-            'address' => 'Phnom Penh, Cambodia',
-            'address_km' => 'ភ្នំពេញ កម្ពុជា',
+            'telegram' => 'https://t.me/TienG_ChamrerN_BTC',
+            'facebook' => 'https://www.facebook.com/tieng.chamrern.2025/',
+            'address' => 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia',
+            'address_km' => 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា',
             'gender' => 'Male',
             'gender_km' => 'ប្រុស',
-            'date_of_birth' => '20-June-1999',
+            'date_of_birth' => '10-November-2003',
             'marital_status' => 'Single',
             'marital_status_km' => 'នៅលីវ',
             'nationality' => 'Khmer',
             'nationality_km' => 'ខ្មែរ',
-            'place_of_birth' => 'Takeo Province',
-            'place_of_birth_km' => 'ខេត្តតាកែវ',
+            'place_of_birth' => 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.',
+            'place_of_birth_km' => 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម',
             'layout' => 'classic',
             'cover_letter_enabled' => true,
             'cover_letter_salutation' => 'Dear Sir / Madam,',
@@ -58,7 +60,7 @@ class CvSeeder extends Seeder
             'cover_letter_closing' => "I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\n\nThank you for your time and consideration.",
             'cover_letter_closing_km' => "ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\n\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។",
             'cover_letter_signature' => 'Tieng Chamrern',
-            'cover_letter_signature_km' => 'ធីង ចាំរឿន',
+            'cover_letter_signature_km' => 'ទៀង ចំរើន',
         ]);
 
         $categories = [
@@ -235,9 +237,9 @@ class CvSeeder extends Seeder
 
         $trainings = [
             ['Completed English Course at SETEC Institute', 'បានបញ្ចប់វគ្គភាសាអង់គ្លេសនៅវិទ្យាស្ថាន SETEC'],
-            ['Completed Microsoft Office Training', 'បានបញ្ចប់ការបណ្តុះបណ្តាល Microsoft Office'],
-            ['Passed Bacc II Exam', 'បានជាប់ប្រឡងបាក់ឌុប'],
-            ['Completed English Course Level 1–5', 'បានបញ្ចប់វគ្គភាសាអង់គ្លេសកម្រិត ១–៥'],
+            ['Completed Microsoft Office Training at Appbook Computer Center', 'បានបញ្ចប់ការបណ្តុះបណ្តាល Microsoft Office នៅ Appbook Computer Center'],
+            ['Passed Bacc II Exam && Deplume', 'បានជាប់ប្រឡងមធ្យមសិក្សាទុតិយភូមិ នឹង មធ្យមសិក្សាបឋមភូមិ'],
+            ['Completed English Course New Headway (Elementary–Intermediate) Level 1–5', 'បានបញ្ចប់វគ្គភាសាអង់គ្លេស New Headway (Elementary–Intermediate) កម្រិត ១–៥'],
         ];
 
         foreach ($trainings as $i => [$description, $descriptionKm]) {
@@ -292,7 +294,7 @@ class CvSeeder extends Seeder
             'title_km' => 'វិស្វកម្ម',
             'organization' => 'National Technical Training Institute (NTTI)',
             'organization_km' => 'វិទ្យាស្ថានបណ្តុះបណ្តាលបច្ចេកទេសជាតិ (NTTI)',
-            'phone' => '012 345 678',
+            'phone' => '093 947 311',
             'sort_order' => 0,
         ]);
 
@@ -303,7 +305,7 @@ class CvSeeder extends Seeder
             'title_km' => 'ប្រព័ន្ធព័ត៌មានគ្រប់គ្រង',
             'organization' => 'SETEC INSTITUTE',
             'organization_km' => 'វិទ្យាស្ថាន SETEC',
-            'phone' => '012 987 654',
+            'phone' => '010 591 330',
             'sort_order' => 1,
         ]);
     }
