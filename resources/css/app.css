@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Kantumruy+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+    --navy: #1a1a4b;
+    --navy-deep: #12123a;
+    --accent: #7ec8e8;
+    --accent-soft: #a8d8ea;
+    --panel: #f0f2f5;
+    --ink: #1e1e2f;
+    --muted: #5a5a72;
+    --font-latin: 'DM Sans', sans-serif;
+    --font-display: Outfit, 'Kantumruy Pro', sans-serif;
+    --font-khmer: 'Kantumruy Pro', 'Battambang', 'Noto Sans Khmer', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-latin);
+    color: var(--ink);
+    background:
+        radial-gradient(ellipse at top left, #e8eef8 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, #dde8f4 0%, transparent 45%),
+        #e4e9f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Khmer mode: Kantumruy Pro reads clearer than Noto Sans Khmer on screen */
+html.locale-km,
+html.locale-km body {
+    font-family: var(--font-khmer);
+    line-height: 1.75;
+    font-size: 15.5px;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+}
+
+html.locale-km h1,
+html.locale-km h2,
+html.locale-km h3,
+html.locale-km .pill,
+html.locale-km .cv-heading,
+html.locale-km .banner-text h1,
+html.locale-km .banner-text p,
+html.locale-km .title,
+html.locale-km .hero h1,
+html.locale-km .title-line {
+    font-family: 'Kantumruy Pro', 'Battambang', sans-serif;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.45;
+    font-weight: 600;
+}
+
+html.locale-km .pill,
+html.locale-km .cv-heading {
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+}
+
+#cv-app {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
