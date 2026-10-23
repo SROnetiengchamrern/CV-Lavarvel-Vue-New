@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2026 at 07:46 AM
+-- Generation Time: Oct 23, 2026 at 10:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -383,7 +383,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2026_10_22_071011_create_education_documents_table', 5),
 (17, '2026_10_23_033714_add_cover_letter_to_profiles_table', 6),
 (18, '2026_10_23_040000_add_khmer_fields_to_cv_tables', 7),
-(19, '2026_10_23_050000_create_cv_files_table', 8);
+(19, '2026_10_23_050000_create_cv_files_table', 8),
+(20, '2026_10_23_060000_add_social_links_to_profiles_table', 9);
 
 -- --------------------------------------------------------
 
@@ -413,6 +414,8 @@ CREATE TABLE `profiles` (
   `email` varchar(255) DEFAULT NULL,
   `phone_primary` varchar(255) DEFAULT NULL,
   `phone_secondary` varchar(255) DEFAULT NULL,
+  `telegram` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `address_km` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
@@ -442,8 +445,8 @@ CREATE TABLE `profiles` (
 -- Dumping data for table `profiles`
 --
 
-INSERT INTO `profiles` (`id`, `full_name`, `full_name_km`, `title`, `title_km`, `photo`, `email`, `phone_primary`, `phone_secondary`, `address`, `address_km`, `gender`, `gender_km`, `date_of_birth`, `marital_status`, `marital_status_km`, `nationality`, `nationality_km`, `place_of_birth`, `place_of_birth_km`, `layout`, `cover_letter_enabled`, `cover_letter_salutation`, `cover_letter_salutation_km`, `cover_letter_body`, `cover_letter_body_km`, `cover_letter_closing`, `cover_letter_closing_km`, `cover_letter_signature`, `cover_letter_signature_km`, `created_at`, `updated_at`) VALUES
-(5, 'Tieng Chamrern', 'ទៀង​ ចំរើន', 'Full Stack Developer', 'Full Stack Developer', 'profiles/P97wGZC2sviXTL0UAIceDqU3ZsSIod7Qwwi9iWLe.jpg', 'tiengchamrern2@gmail.com', '096 779 7762/078 783 645', NULL, 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia', 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា', 'Male', 'ប្រុស', '10-November-2003', 'Single', 'នៅលីវ', 'Khmer', 'ខ្មែរ', 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.', 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម', 'mirror', 1, 'Dear Sir / Madam,', 'សូមគោរព ឯកឧត្តម / លោក / លោកស្រី,', 'I am writing to express my strong interest in the Web Developer position. I hold a Bachelor\'s Degree in Management Information Systems and have more than three years of practical experience building web applications.\r\n\r\nAt Khmer Gaming Software Solution Co., Ltd., I have worked on front-end and back-end development using HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel, and Vue.js, including UI/UX design and platform integration.\r\n\r\nI also have experience with technical troubleshooting, hardware and software repair for laptops and desktops, smartphones, and basic office network setup.', 'ខ្ញុំសូមសរសេរមកដើម្បីបង្ហាញពីចំណាប់អារម្មណ៍ខ្លាំងរបស់ខ្ញុំចំពោះតួនាទីអ្នកអភិវឌ្ឍន៍គេហទំព័រ។ ខ្ញុំមានសញ្ញាបត្របរិញ្ញាបត្រផ្នែកប្រព័ន្ធព័ត៌មានគ្រប់គ្រង (MIS) និងមានបទពិសោធន៍ជាង ៣ ឆ្នាំក្នុងការបង្កើតកម្មវិធីគេហទំព័រ។\r\n\r\nនៅក្រុមហ៊ុន Khmer Gaming Software Solution Co., Ltd. ខ្ញុំបានធ្វើការអភិវឌ្ឍន៍ front-end និង back-end ដោយប្រើ HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel និង Vue.js រួមទាំងការរចនា UI/UX និងការភ្ជាប់ប្រព័ន្ធ។\r\n\r\nខ្ញុំក៏មានបទពិសោធន៍ក្នុងការដោះស្រាយបញ្ហាបច្ចេកទេស ការជួសជុលហាត់វែរ និងសូហ្វវែរសម្រាប់កុំព្យូទ័រ ស្មាតហ្វូន និងការដំឡើងបណ្តាញការិយាល័យមូលដ្ឋាន។', 'I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\r\n\r\nThank you for your time and consideration.', 'ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\r\n\r\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។', 'Tieng Chamrern', 'ទៀង ចំរើន', '2026-10-22 20:55:03', '2026-10-22 22:46:19');
+INSERT INTO `profiles` (`id`, `full_name`, `full_name_km`, `title`, `title_km`, `photo`, `email`, `phone_primary`, `phone_secondary`, `telegram`, `facebook`, `address`, `address_km`, `gender`, `gender_km`, `date_of_birth`, `marital_status`, `marital_status_km`, `nationality`, `nationality_km`, `place_of_birth`, `place_of_birth_km`, `layout`, `cover_letter_enabled`, `cover_letter_salutation`, `cover_letter_salutation_km`, `cover_letter_body`, `cover_letter_body_km`, `cover_letter_closing`, `cover_letter_closing_km`, `cover_letter_signature`, `cover_letter_signature_km`, `created_at`, `updated_at`) VALUES
+(5, 'Tieng Chamrern', 'ទៀង​ ចំរើន', 'Full Stack Developer', 'Full Stack Developer', 'profiles/P97wGZC2sviXTL0UAIceDqU3ZsSIod7Qwwi9iWLe.jpg', 'tiengchamrern2@gmail.com', '096 779 7762/078 783 645', NULL, 'https://t.me/TienG_ChamrerN_BTC', 'https://www.facebook.com/tieng.chamrern.2025/', 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia', 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា', 'Male', 'ប្រុស', '10-November-2003', 'Single', 'នៅលីវ', 'Khmer', 'ខ្មែរ', 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.', 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម', 'emerald', 1, 'Dear Sir / Madam,', 'សូមគោរព ឯកឧត្តម / លោក / លោកស្រី,', 'I am writing to express my strong interest in the Web Developer position. I hold a Bachelor\'s Degree in Management Information Systems and have more than three years of practical experience building web applications.\r\n\r\nAt Khmer Gaming Software Solution Co., Ltd., I have worked on front-end and back-end development using HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel, and Vue.js, including UI/UX design and platform integration.\r\n\r\nI also have experience with technical troubleshooting, hardware and software repair for laptops and desktops, smartphones, and basic office network setup.', 'ខ្ញុំសូមសរសេរមកដើម្បីបង្ហាញពីចំណាប់អារម្មណ៍ខ្លាំងរបស់ខ្ញុំចំពោះតួនាទីអ្នកអភិវឌ្ឍន៍គេហទំព័រ។ ខ្ញុំមានសញ្ញាបត្របរិញ្ញាបត្រផ្នែកប្រព័ន្ធព័ត៌មានគ្រប់គ្រង (MIS) និងមានបទពិសោធន៍ជាង ៣ ឆ្នាំក្នុងការបង្កើតកម្មវិធីគេហទំព័រ។\r\n\r\nនៅក្រុមហ៊ុន Khmer Gaming Software Solution Co., Ltd. ខ្ញុំបានធ្វើការអភិវឌ្ឍន៍ front-end និង back-end ដោយប្រើ HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel និង Vue.js រួមទាំងការរចនា UI/UX និងការភ្ជាប់ប្រព័ន្ធ។\r\n\r\nខ្ញុំក៏មានបទពិសោធន៍ក្នុងការដោះស្រាយបញ្ហាបច្ចេកទេស ការជួសជុលហាត់វែរ និងសូហ្វវែរសម្រាប់កុំព្យូទ័រ ស្មាតហ្វូន និងការដំឡើងបណ្តាញការិយាល័យមូលដ្ឋាន។', 'I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\r\n\r\nThank you for your time and consideration.', 'ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\r\n\r\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។', 'Tieng Chamrern', 'ទៀង ចំរើន', '2026-10-22 20:55:03', '2026-10-23 01:07:53');
 
 -- --------------------------------------------------------
 
@@ -465,7 +468,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('0alahVEfIJQH3imsjNIW9ThsEfQH3uyIyllTVHFQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVjBRRjdwbGlzMkJ2bThEN1BpbWtYVmhRb0dyQWlYZERjYmQ1V2dLTyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6ODE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tZWRpYS9wcm9maWxlcy9QOTd3R1pDMnN2aVhUTDBVQUljZURxVTNac1NJb2Q3UXd3aTlpV0xlLmpwZyI7czo1OiJyb3V0ZSI7czoxMDoibWVkaWEuc2hvdyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjQ6IjU4OGZlOTRkMjkxZGRkOGJjODVhYTM5YWMwOGMxMWViNWRiMDUzOWY0ZGFiYTlkNTAwZWNiMWFjMjk1NzZiZGYiO3M6NjoibG9jYWxlIjtzOjI6ImVuIjt9', 1792734388);
+('GvgzUChcMHTzWEeqJxjdujCTq9skWQGmcdBZzwPi', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiV0NrbXdKV0tpV1RKT1NWOVl2bjBmOGVEVGhHOEk4NjU5WWpwSlk1ZiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjY0OiI1ODhmZTk0ZDI5MWRkZDhiYzg1YWEzOWFjMDhjMTFlYjVkYjA1MzlmNGRhYmE5ZDUwMGVjYjFhYzI5NTc2YmRmIjt9', 1792743614);
 
 -- --------------------------------------------------------
 
@@ -502,32 +505,51 @@ INSERT INTO `skills` (`id`, `name`, `name_km`, `level`, `category`, `show_bar`, 
 (162, 'Vue JS', NULL, 88, 'personal', 1, 9, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
 (163, 'React JS', NULL, 82, 'personal', 1, 10, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
 (164, 'Jquery', NULL, 85, 'personal', 1, 11, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(165, 'HTML', NULL, 85, 'setec', 0, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(166, 'CSS', NULL, 85, 'setec', 0, 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(167, 'PHP', NULL, 85, 'setec', 0, 2, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(168, 'JavaScript', NULL, 85, 'setec', 0, 3, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(169, 'WordPress', NULL, 85, 'setec', 0, 4, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(170, 'Joomla', NULL, 80, 'technical', 0, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(171, 'Laravel', NULL, 80, 'technical', 0, 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(172, 'Database', NULL, 80, 'technical', 0, 2, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(173, 'Flutter', NULL, 80, 'technical', 0, 3, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(174, 'ASP.NET', NULL, 80, 'technical', 0, 4, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(175, 'Django', NULL, 80, 'technical', 0, 5, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(176, 'Spring Tool', NULL, 80, 'technical', 0, 6, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(177, 'Java', NULL, 80, 'technical', 0, 7, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(178, 'C#', NULL, 80, 'technical', 0, 8, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(179, 'Linux', NULL, 80, 'technical', 0, 9, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(180, 'C++', NULL, 80, 'technical', 0, 10, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(181, 'MYSQL', NULL, 80, 'technical', 0, 11, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(182, 'SQL Server', NULL, 80, 'technical', 0, 12, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(183, 'Navicat', NULL, 80, 'technical', 0, 13, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(184, 'GitHub', NULL, 80, 'technical', 0, 14, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(185, 'GitLab', NULL, 80, 'technical', 0, 15, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(186, 'Vue JS', NULL, 85, 'master_it', 0, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(187, 'Quasar', NULL, 85, 'master_it', 0, 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(188, 'JavaScript', NULL, 85, 'master_it', 0, 2, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(189, 'BootStrap', NULL, 85, 'master_it', 0, 3, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(190, 'Dynamic Website', NULL, 85, 'master_it', 0, 4, '2026-10-22 20:55:03', '2026-10-22 20:55:03');
+(165, 'HTML', NULL, 85, 'setec-institute-bachelor-degree', 0, 0, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
+(166, 'CSS', NULL, 85, 'setec-institute-bachelor-degree', 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
+(167, 'PHP', NULL, 85, 'setec-institute-bachelor-degree', 0, 2, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
+(168, 'JavaScript', NULL, 85, 'setec-institute-bachelor-degree', 0, 3, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
+(169, 'WordPress', NULL, 85, 'setec-institute-bachelor-degree', 0, 4, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
+(170, 'Joomla', NULL, 80, 'setec-institute-bachelor-degree', 0, 0, '2026-10-22 20:55:03', '2026-10-23 01:11:21'),
+(171, 'Laravel', NULL, 80, 'setec-institute-bachelor-degree', 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:11:26'),
+(172, 'Database', NULL, 80, 'setec-institute-bachelor-degree', 0, 2, '2026-10-22 20:55:03', '2026-10-23 01:11:35'),
+(173, 'Flutter', NULL, 80, 'setec-institute-bachelor-degree', 0, 3, '2026-10-22 20:55:03', '2026-10-23 01:11:40'),
+(174, 'ASP.NET', NULL, 80, 'setec-institute-bachelor-degree', 0, 4, '2026-10-22 20:55:03', '2026-10-23 01:11:45'),
+(175, 'Django', NULL, 80, 'setec-institute-bachelor-degree', 0, 5, '2026-10-22 20:55:03', '2026-10-23 01:11:51'),
+(176, 'Spring Tool', NULL, 80, 'setec-institute-bachelor-degree', 0, 6, '2026-10-22 20:55:03', '2026-10-23 01:12:01'),
+(177, 'Java', NULL, 80, 'setec-institute-bachelor-degree', 0, 7, '2026-10-22 20:55:03', '2026-10-23 01:12:23'),
+(178, 'C#', NULL, 80, 'setec-institute-bachelor-degree', 0, 8, '2026-10-22 20:55:03', '2026-10-23 01:12:28'),
+(179, 'Linux', NULL, 80, 'setec-institute-bachelor-degree', 0, 9, '2026-10-22 20:55:03', '2026-10-23 01:12:32'),
+(180, 'C++', NULL, 80, 'setec-institute-bachelor-degree', 0, 10, '2026-10-22 20:55:03', '2026-10-23 01:11:56'),
+(181, 'MYSQL', NULL, 80, 'setec-institute-bachelor-degree', 0, 11, '2026-10-22 20:55:03', '2026-10-23 01:12:14'),
+(182, 'SQL Server', NULL, 80, 'setec-institute-bachelor-degree', 0, 12, '2026-10-22 20:55:03', '2026-10-23 01:12:18'),
+(183, 'Navicat', NULL, 80, 'setec-institute-bachelor-degree', 0, 13, '2026-10-22 20:55:03', '2026-10-23 01:12:37'),
+(184, 'GitHub', NULL, 80, 'setec-institute-bachelor-degree', 0, 14, '2026-10-22 20:55:03', '2026-10-23 01:12:10'),
+(185, 'GitLab', NULL, 80, 'setec-institute-bachelor-degree', 0, 15, '2026-10-22 20:55:03', '2026-10-23 01:12:05'),
+(186, 'Vue JS', NULL, 85, 'master-it-school', 0, 0, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
+(187, 'Quasar', NULL, 85, 'master-it-school', 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
+(188, 'JavaScript', NULL, 85, 'master-it-school', 0, 2, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
+(189, 'BootStrap', NULL, 85, 'master-it-school', 0, 3, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
+(190, 'Dynamic Website', NULL, 85, 'master-it-school', 0, 4, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
+(191, 'Docker', NULL, 80, 'setec-institute-bachelor-degree', 0, 16, '2026-10-23 01:13:25', '2026-10-23 01:13:25'),
+(192, 'Homan Resource Management', NULL, 80, 'setec-institute-masters-degree', 0, 1, '2026-10-23 01:17:10', '2026-10-23 01:17:10'),
+(193, 'Business Statestics', NULL, 80, 'setec-institute-masters-degree', 0, 2, '2026-10-23 01:17:19', '2026-10-23 01:17:19'),
+(194, 'Research Methodology', NULL, 80, 'setec-institute-masters-degree', 0, 3, '2026-10-23 01:17:26', '2026-10-23 01:17:26'),
+(195, 'Relational Database Management System', NULL, 80, 'setec-institute-masters-degree', 0, 4, '2026-10-23 01:17:35', '2026-10-23 01:17:35'),
+(196, 'Advance Database Administration Workshop I', NULL, 80, 'setec-institute-masters-degree', 0, 5, '2026-10-23 01:17:44', '2026-10-23 01:17:44'),
+(197, 'Advance Database Administration Workshop II', NULL, 80, 'setec-institute-masters-degree', 0, 6, '2026-10-23 01:17:49', '2026-10-23 01:17:49'),
+(198, 'Software Project Management', NULL, 80, 'setec-institute-masters-degree', 0, 7, '2026-10-23 01:17:58', '2026-10-23 01:17:58'),
+(199, 'Web Application Development', NULL, 80, 'setec-institute-masters-degree', 0, 8, '2026-10-23 01:18:06', '2026-10-23 01:18:06'),
+(200, 'Java Programming With Oracle', NULL, 80, 'setec-institute-masters-degree', 0, 9, '2026-10-23 01:18:35', '2026-10-23 01:18:35'),
+(201, 'Project on Dot Net Framework', NULL, 80, 'setec-institute-masters-degree', 0, 10, '2026-10-23 01:18:46', '2026-10-23 01:18:46'),
+(202, 'Microsoft Network Administration', NULL, 80, 'setec-institute-masters-degree', 0, 11, '2026-10-23 01:19:01', '2026-10-23 01:19:01'),
+(203, 'Advance Microsoft Network Administration', NULL, 80, 'setec-institute-masters-degree', 0, 12, '2026-10-23 01:19:06', '2026-10-23 01:19:06'),
+(204, 'Network Security', NULL, 80, 'setec-institute-masters-degree', 0, 13, '2026-10-23 01:19:15', '2026-10-23 01:19:15'),
+(205, 'Advance Network Security', NULL, 80, 'setec-institute-masters-degree', 0, 14, '2026-10-23 01:19:23', '2026-10-23 01:19:23'),
+(206, 'Open Source Mobile Application', NULL, 80, 'setec-institute-masters-degree', 0, 15, '2026-10-23 01:19:36', '2026-10-23 01:19:36'),
+(207, 'iOS Mobile Application', NULL, 80, 'setec-institute-masters-degree', 0, 16, '2026-10-23 01:19:43', '2026-10-23 01:19:43'),
+(208, 'Linux Administration', NULL, 80, 'setec-institute-masters-degree', 0, 17, '2026-10-23 01:19:52', '2026-10-23 01:19:52'),
+(209, 'Advance Linux Administration', NULL, 80, 'setec-institute-masters-degree', 0, 18, '2026-10-23 01:19:57', '2026-10-23 01:19:57');
 
 -- --------------------------------------------------------
 
@@ -555,9 +577,9 @@ CREATE TABLE `skill_categories` (
 
 INSERT INTO `skill_categories` (`id`, `name`, `name_km`, `slug`, `section`, `section_km`, `show_bars`, `accent`, `sort_order`, `created_at`, `updated_at`) VALUES
 (14, 'Personal Skills', 'ជំនាញផ្ទាល់ខ្លួន', 'personal', 'Skills', 'ជំនាញ', 1, 0, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(15, 'SETEC Institute', 'វិទ្យាស្ថាន SETEC', 'setec', 'Skills', 'ជំនាញ', 0, 0, 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(16, 'Technical Skills', 'ជំនាញបច្ចេកទេស', 'technical', 'Technical', 'បច្ចេកទេស', 0, 0, 2, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(17, 'Master IT School', 'សាលា Master IT', 'master_it', 'Technical', 'បច្ចេកទេស', 0, 1, 3, '2026-10-22 20:55:03', '2026-10-22 20:55:03');
+(15, 'SETEC Institute (Bachelor Degree)', 'វិទ្យាស្ថានស៊ីតិកថ្នាក់បរិញ្ញាបត្រ', 'setec-institute-bachelor-degree', 'Skills', 'ជំនាញ', 0, 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
+(17, 'Master IT School', 'សាលា Master IT', 'master-it-school', 'Skills', 'ជំនាញ', 0, 1, 3, '2026-10-22 20:55:03', '2026-10-23 01:15:32'),
+(18, 'SETEC Institute (Master\'s Degree)', 'វិទ្យាស្ថានស៊ីតិកថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់', 'setec-institute-masters-degree', 'Skills', NULL, 0, 0, 2, '2026-10-23 01:10:23', '2026-10-23 01:10:45');
 
 -- --------------------------------------------------------
 
@@ -828,7 +850,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `profiles`
@@ -840,13 +862,13 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `skill_categories`
 --
 ALTER TABLE `skill_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `trainings`

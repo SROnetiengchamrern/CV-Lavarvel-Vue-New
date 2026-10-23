@@ -66,8 +66,8 @@ class CvSeeder extends Seeder
         $categories = [
             ['Personal Skills', 'ជំនាញផ្ទាល់ខ្លួន', 'personal', 'Skills', 'ជំនាញ', true, false, 0],
             ['SETEC Institute', 'វិទ្យាស្ថាន SETEC', 'setec', 'Skills', 'ជំនាញ', false, false, 1],
-            ['Technical Skills', 'ជំនាញបច្ចេកទេស', 'technical', 'Technical', 'បច្ចេកទេស', false, false, 2],
-            ['Master IT School', 'សាលា Master IT', 'master_it', 'Technical', 'បច្ចេកទេស', false, true, 3],
+            ['Technical Skills', 'ជំនាញបច្ចេកទេស', 'technical', 'Skills', 'ជំនាញ', false, false, 2],
+            ['Master IT School', 'សាលា Master IT', 'master_it', 'Skills', 'ជំនាញ', false, true, 3],
         ];
 
         foreach ($categories as [$name, $nameKm, $slug, $section, $sectionKm, $showBars, $accent, $sort]) {
