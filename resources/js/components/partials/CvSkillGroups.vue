@@ -1,7 +1,17 @@
 <script setup>
+import CvSectionIcon from './CvSectionIcon.vue';
+
 defineProps({
     skillGroups: { type: Array, default: () => [] },
 });
+
+function sectionIcon(section) {
+    const key = String(section || '').toLowerCase();
+    if (key.includes('technical') || key.includes('បច្ចេក')) {
+        return 'technical';
+    }
+    return 'skills';
+}
 </script>
 
 <template>
@@ -10,7 +20,10 @@ defineProps({
         :key="group.section"
         class="skill-group"
     >
-        <h2 class="cv-heading">{{ group.section }}</h2>
+        <h2 class="cv-heading">
+            <CvSectionIcon :name="sectionIcon(group.section)" />
+            <span>{{ group.section }}</span>
+        </h2>
 
         <template v-for="category in group.categories" :key="category.id">
             <h3 class="sub" :class="{ accent: category.accent }">{{ category.name }}</h3>
@@ -33,11 +46,13 @@ defineProps({
 <style scoped>
 .skill-group { margin-bottom: 1.25rem; }
 .cv-heading {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     margin: 0 0 0.85rem;
     padding: 0.35rem 1rem;
     border-radius: 999px;
-    font-family: Outfit, sans-serif;
+    font-family: Outfit, 'Kantumruy Pro', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.08em;

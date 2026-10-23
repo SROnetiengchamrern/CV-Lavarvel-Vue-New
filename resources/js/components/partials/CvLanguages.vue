@@ -1,4 +1,6 @@
 <script setup>
+import CvSectionIcon from './CvSectionIcon.vue';
+
 defineProps({
     languages: { type: Array, default: () => [] },
     title: { type: String, default: 'Languages' },
@@ -7,7 +9,7 @@ defineProps({
 
 <template>
     <section class="cv-languages">
-        <h2 class="cv-heading">{{ title }}</h2>
+        <h2 class="cv-heading"><CvSectionIcon name="languages" /><span>{{ title }}</span></h2>
         <div v-for="lang in languages" :key="lang.id" class="lang-row">
             <div class="lang-name">{{ lang.name }}</div>
             <div class="lang-dots">
@@ -24,11 +26,13 @@ defineProps({
 
 <style scoped>
 .cv-heading {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     margin: 0 0 0.85rem;
     padding: 0.35rem 1rem;
     border-radius: 999px;
-    font-family: Outfit, sans-serif;
+    font-family: Outfit, 'Kantumruy Pro', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.08em;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2026 at 07:12 AM
+-- Generation Time: Oct 23, 2026 at 07:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,6 @@ CREATE TABLE `aws_courses` (
 
 INSERT INTO `aws_courses` (`id`, `title`, `title_km`, `course_code`, `role`, `role_km`, `is_completed`, `badge_color`, `sort_order`, `created_at`, `updated_at`) VALUES
 (15, 'AWS Academy Cloud Architecting', 'វគ្គ AWS Academy Cloud Architecting', NULL, 'Student', 'សិស្ស', 1, '#ec4899', 0, '2026-10-22 20:55:03', '2026-10-22 21:35:40'),
-(16, 'AWS Academy Cloud Architecting', 'វគ្គ AWS Academy Cloud Architecting', NULL, 'Student', 'សិស្ស', 1, '#92400e', 1, '2026-10-22 20:55:03', '2026-10-22 21:35:46'),
 (17, 'AWS Academy Cloud Foundations', 'វគ្គ AWS Academy Cloud Foundations', NULL, 'Student', 'សិស្ស', 1, '#0d9488', 2, '2026-10-22 20:55:03', '2026-10-22 21:35:50'),
 (18, 'AWS Academy Cloud Operations', 'វគ្គ AWS Academy Cloud Operations', NULL, 'Student', 'សិស្ស', 1, '#166534', 3, '2026-10-22 20:55:03', '2026-10-22 21:35:55'),
 (19, 'AWS Academy Cloud Security Foundations', 'វគ្គ AWS Academy Cloud Security Foundations', NULL, 'Student', 'សិស្ស', 1, '#15803d', 4, '2026-10-22 20:55:03', '2026-10-22 21:35:59'),
@@ -96,6 +95,17 @@ CREATE TABLE `course_certificates` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `course_certificates`
+--
+
+INSERT INTO `course_certificates` (`id`, `aws_course_id`, `title`, `file_path`, `original_name`, `mime_type`, `file_size`, `sort_order`, `created_at`, `updated_at`) VALUES
+(2, 21, 'AWS Academy Graduate AWS Academy Cloud Foundations', 'certificates/aws/pLUEjSsXIpxVbQJii2Z1LTNXamf5i5K8cAcRQkWD.png', 'AWS Academy Graduate AWS Academy Cloud Foundations.png', 'image/png', 205855, 1, '2026-10-22 22:21:34', '2026-10-22 22:21:34'),
+(3, 17, 'AWS Academy Graduate AWS Academy Cloud Foundations', 'certificates/aws/1L7eYiFFU5wJ3RY9ARJkPHoVPQ49UsjifjlZuitV.png', 'AWS Academy Graduate AWS Academy Cloud Foundations.png', 'image/png', 205855, 1, '2026-10-22 22:22:37', '2026-10-22 22:22:37'),
+(4, 15, 'AWS_Academy_Graduate_AWS_Academy_Cloud_Architecting_Badge20250425', 'certificates/aws/XykQZaRj3WbIVkjkwvpV2Mna9NrOmy9q6UNc8GqC.pdf', 'AWS_Academy_Graduate_AWS_Academy_Cloud_Architecting_Badge20250425.pdf', 'application/pdf', 228458, 1, '2026-10-22 22:22:59', '2026-10-22 22:22:59'),
+(5, 19, 'AWS_Academy_Graduate_AWS_Academy_Cloud_Security_Foundations_Badge20250609', 'certificates/aws/aU3nRDDOxu7ycHbsjI2evKzHadiTxHqplERE9iM8.pdf', 'AWS_Academy_Graduate_AWS_Academy_Cloud_Security_Foundations_Badge20250609.pdf', 'application/pdf', 990249, 1, '2026-10-22 22:29:16', '2026-10-22 22:29:16'),
+(6, 18, 'AWS_Academy_Graduate_AWS_Academy_Cloud_Operations_Badge20250609', 'certificates/aws/CO8gbg7dJQGPqh3dKNw7cmkwODwYWNQqrDTRKDoL.pdf', 'AWS_Academy_Graduate_AWS_Academy_Cloud_Operations_Badge20250609.pdf', 'application/pdf', 990102, 1, '2026-10-22 22:29:45', '2026-10-22 22:29:45');
 
 -- --------------------------------------------------------
 
@@ -148,8 +158,8 @@ CREATE TABLE `cv_references` (
 --
 
 INSERT INTO `cv_references` (`id`, `name`, `name_km`, `title`, `title_km`, `organization`, `organization_km`, `phone`, `sort_order`, `created_at`, `updated_at`) VALUES
-(9, 'Mr. Hor Sothy', 'លោក ហោ សុធី', 'Engineering', 'វិស្វកម្ម', 'National Technical Training Institute (NTTI)', 'វិទ្យាស្ថានបណ្តុះបណ្តាលបច្ចេកទេសជាតិ (NTTI)', '012 345 678', 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(10, 'Mr. Kim Vanna', 'លោក គឹម វណ្ណា', 'Management Information System', 'ប្រព័ន្ធព័ត៌មានគ្រប់គ្រង', 'SETEC INSTITUTE', 'វិទ្យាស្ថាន SETEC', '012 987 654', 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03');
+(9, 'Mr. Hor Sothy', 'លោក ហោ សុធី', 'Engineering', 'វិស្វកម្ម', 'National Technical Training Institute (NTTI)', 'វិទ្យាស្ថានបណ្តុះបណ្តាលបច្ចេកទេសជាតិ (NTTI)', '093 947 311', 0, '2026-10-22 20:55:03', '2026-10-22 22:33:02'),
+(10, 'Mr. Kim Vanna', 'លោក គឹម វណ្ណា', 'Management Information System', 'ប្រព័ន្ធព័ត៌មានគ្រប់គ្រង', 'SETEC INSTITUTE', 'វិទ្យាស្ថាន SETEC', '010 591 330', 1, '2026-10-22 20:55:03', '2026-10-22 22:33:13');
 
 -- --------------------------------------------------------
 
@@ -433,7 +443,7 @@ CREATE TABLE `profiles` (
 --
 
 INSERT INTO `profiles` (`id`, `full_name`, `full_name_km`, `title`, `title_km`, `photo`, `email`, `phone_primary`, `phone_secondary`, `address`, `address_km`, `gender`, `gender_km`, `date_of_birth`, `marital_status`, `marital_status_km`, `nationality`, `nationality_km`, `place_of_birth`, `place_of_birth_km`, `layout`, `cover_letter_enabled`, `cover_letter_salutation`, `cover_letter_salutation_km`, `cover_letter_body`, `cover_letter_body_km`, `cover_letter_closing`, `cover_letter_closing_km`, `cover_letter_signature`, `cover_letter_signature_km`, `created_at`, `updated_at`) VALUES
-(5, 'Tieng Chamrern', 'ទៀង​ ចំរើន', 'Web Developer', 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ', 'profiles/P97wGZC2sviXTL0UAIceDqU3ZsSIod7Qwwi9iWLe.jpg', 'tiengchamrern2@gmail.com', '096 779 7762/078 783 645', NULL, 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia', 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា', 'Male', 'ប្រុស', '10-November-2003', 'Single', 'នៅលីវ', 'Khmer', 'ខ្មែរ', 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.', 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម', 'classic', 1, 'Dear Sir / Madam,', 'សូមគោរព ឯកឧត្តម / លោក / លោកស្រី,', 'I am writing to express my strong interest in the Web Developer position. I hold a Bachelor\'s Degree in Management Information Systems and have more than three years of practical experience building web applications.\r\n\r\nAt Khmer Gaming Software Solution Co., Ltd., I have worked on front-end and back-end development using HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel, and Vue.js, including UI/UX design and platform integration.\r\n\r\nI also have experience with technical troubleshooting, hardware and software repair for laptops and desktops, smartphones, and basic office network setup.', 'ខ្ញុំសូមសរសេរមកដើម្បីបង្ហាញពីចំណាប់អារម្មណ៍ខ្លាំងរបស់ខ្ញុំចំពោះតួនាទីអ្នកអភិវឌ្ឍន៍គេហទំព័រ។ ខ្ញុំមានសញ្ញាបត្របរិញ្ញាបត្រផ្នែកប្រព័ន្ធព័ត៌មានគ្រប់គ្រង (MIS) និងមានបទពិសោធន៍ជាង ៣ ឆ្នាំក្នុងការបង្កើតកម្មវិធីគេហទំព័រ។\r\n\r\nនៅក្រុមហ៊ុន Khmer Gaming Software Solution Co., Ltd. ខ្ញុំបានធ្វើការអភិវឌ្ឍន៍ front-end និង back-end ដោយប្រើ HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel និង Vue.js រួមទាំងការរចនា UI/UX និងការភ្ជាប់ប្រព័ន្ធ។\r\n\r\nខ្ញុំក៏មានបទពិសោធន៍ក្នុងការដោះស្រាយបញ្ហាបច្ចេកទេស ការជួសជុលហាត់វែរ និងសូហ្វវែរសម្រាប់កុំព្យូទ័រ ស្មាតហ្វូន និងការដំឡើងបណ្តាញការិយាល័យមូលដ្ឋាន។', 'I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\r\n\r\nThank you for your time and consideration.', 'ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\r\n\r\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។', 'Tieng Chamrern', 'ទៀង ចំរើន', '2026-10-22 20:55:03', '2026-10-22 22:10:27');
+(5, 'Tieng Chamrern', 'ទៀង​ ចំរើន', 'Full Stack Developer', 'Full Stack Developer', 'profiles/P97wGZC2sviXTL0UAIceDqU3ZsSIod7Qwwi9iWLe.jpg', 'tiengchamrern2@gmail.com', '096 779 7762/078 783 645', NULL, 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia', 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា', 'Male', 'ប្រុស', '10-November-2003', 'Single', 'នៅលីវ', 'Khmer', 'ខ្មែរ', 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.', 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម', 'mirror', 1, 'Dear Sir / Madam,', 'សូមគោរព ឯកឧត្តម / លោក / លោកស្រី,', 'I am writing to express my strong interest in the Web Developer position. I hold a Bachelor\'s Degree in Management Information Systems and have more than three years of practical experience building web applications.\r\n\r\nAt Khmer Gaming Software Solution Co., Ltd., I have worked on front-end and back-end development using HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel, and Vue.js, including UI/UX design and platform integration.\r\n\r\nI also have experience with technical troubleshooting, hardware and software repair for laptops and desktops, smartphones, and basic office network setup.', 'ខ្ញុំសូមសរសេរមកដើម្បីបង្ហាញពីចំណាប់អារម្មណ៍ខ្លាំងរបស់ខ្ញុំចំពោះតួនាទីអ្នកអភិវឌ្ឍន៍គេហទំព័រ។ ខ្ញុំមានសញ្ញាបត្របរិញ្ញាបត្រផ្នែកប្រព័ន្ធព័ត៌មានគ្រប់គ្រង (MIS) និងមានបទពិសោធន៍ជាង ៣ ឆ្នាំក្នុងការបង្កើតកម្មវិធីគេហទំព័រ។\r\n\r\nនៅក្រុមហ៊ុន Khmer Gaming Software Solution Co., Ltd. ខ្ញុំបានធ្វើការអភិវឌ្ឍន៍ front-end និង back-end ដោយប្រើ HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel និង Vue.js រួមទាំងការរចនា UI/UX និងការភ្ជាប់ប្រព័ន្ធ។\r\n\r\nខ្ញុំក៏មានបទពិសោធន៍ក្នុងការដោះស្រាយបញ្ហាបច្ចេកទេស ការជួសជុលហាត់វែរ និងសូហ្វវែរសម្រាប់កុំព្យូទ័រ ស្មាតហ្វូន និងការដំឡើងបណ្តាញការិយាល័យមូលដ្ឋាន។', 'I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\r\n\r\nThank you for your time and consideration.', 'ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\r\n\r\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។', 'Tieng Chamrern', 'ទៀង ចំរើន', '2026-10-22 20:55:03', '2026-10-22 22:46:19');
 
 -- --------------------------------------------------------
 
@@ -455,7 +465,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('0alahVEfIJQH3imsjNIW9ThsEfQH3uyIyllTVHFQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVjBRRjdwbGlzMkJ2bThEN1BpbWtYVmhRb0dyQWlYZERjYmQ1V2dLTyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjQ6IjU4OGZlOTRkMjkxZGRkOGJjODVhYTM5YWMwOGMxMWViNWRiMDUzOWY0ZGFiYTlkNTAwZWNiMWFjMjk1NzZiZGYiO3M6NjoibG9jYWxlIjtzOjI6ImVuIjt9', 1792732355);
+('0alahVEfIJQH3imsjNIW9ThsEfQH3uyIyllTVHFQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVjBRRjdwbGlzMkJ2bThEN1BpbWtYVmhRb0dyQWlYZERjYmQ1V2dLTyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6ODE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tZWRpYS9wcm9maWxlcy9QOTd3R1pDMnN2aVhUTDBVQUljZURxVTNac1NJb2Q3UXd3aTlpV0xlLmpwZyI7czo1OiJyb3V0ZSI7czoxMDoibWVkaWEuc2hvdyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjQ6IjU4OGZlOTRkMjkxZGRkOGJjODVhYTM5YWMwOGMxMWViNWRiMDUzOWY0ZGFiYTlkNTAwZWNiMWFjMjk1NzZiZGYiO3M6NjoibG9jYWxlIjtzOjI6ImVuIjt9', 1792734388);
 
 -- --------------------------------------------------------
 
@@ -758,7 +768,7 @@ ALTER TABLE `aws_courses`
 -- AUTO_INCREMENT for table `course_certificates`
 --
 ALTER TABLE `course_certificates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cv_files`

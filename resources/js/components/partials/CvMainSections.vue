@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import CvDocButtons from './CvDocButtons.vue';
+import CvSectionIcon from './CvSectionIcon.vue';
 
 const props = defineProps({
     profile: { type: Object, default: () => ({}) },
@@ -19,7 +20,7 @@ const ui = computed(() => props.cv?.ui || {});
         </header>
 
         <section class="panel">
-            <h2 class="pill">{{ ui.personal_data || 'Personal Data' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="personal" /><span>{{ ui.personal_data || 'Personal Data' }}</span></h2>
             <dl class="data-grid">
                 <template v-if="profile.gender"><dt>{{ ui.gender || 'Gender' }}</dt><dd>{{ profile.gender }}</dd></template>
                 <template v-if="profile.date_of_birth"><dt>{{ ui.date_of_birth || 'Date of Birth' }}</dt><dd>{{ profile.date_of_birth }}</dd></template>
@@ -30,7 +31,7 @@ const ui = computed(() => props.cv?.ui || {});
         </section>
 
         <section class="panel">
-            <h2 class="pill">{{ ui.education || 'Education Background' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="education" /><span>{{ ui.education || 'Education Background' }}</span></h2>
             <ul class="timeline">
                 <li v-for="item in cv.education" :key="item.id">
                     <span class="years">{{ item.years }}</span>
@@ -44,7 +45,7 @@ const ui = computed(() => props.cv?.ui || {});
         </section>
 
         <section class="panel">
-            <h2 class="pill">{{ ui.experience || 'Work Experiences' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="experience" /><span>{{ ui.experience || 'Work Experiences' }}</span></h2>
             <ul class="timeline">
                 <li v-for="job in cv.experiences" :key="job.id">
                     <span class="years">{{ job.years }}</span>
@@ -60,14 +61,14 @@ const ui = computed(() => props.cv?.ui || {});
         </section>
 
         <section class="panel">
-            <h2 class="pill">{{ ui.training || 'Other Training' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="training" /><span>{{ ui.training || 'Other Training' }}</span></h2>
             <ul class="plain-list">
                 <li v-for="item in cv.trainings" :key="item.id">{{ item.description }}</li>
             </ul>
         </section>
 
         <section v-if="cv.aws_courses?.length" class="panel">
-            <h2 class="pill">{{ ui.aws_courses || 'AWS Courses & Certificates' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="aws" /><span>{{ ui.aws_courses || 'AWS Courses & Certificates' }}</span></h2>
             <ul class="aws-list">
                 <li v-for="course in cv.aws_courses" :key="course.id" class="aws-item">
                     <div class="aws-head">
@@ -86,14 +87,14 @@ const ui = computed(() => props.cv?.ui || {});
         </section>
 
         <section class="panel">
-            <h2 class="pill">{{ ui.interests || 'Special Interest' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="interests" /><span>{{ ui.interests || 'Special Interest' }}</span></h2>
             <ul class="plain-list">
                 <li v-for="item in cv.interests" :key="item.id">{{ item.description }}</li>
             </ul>
         </section>
 
         <section class="panel">
-            <h2 class="pill">{{ ui.references || 'References' }}</h2>
+            <h2 class="pill"><CvSectionIcon name="references" /><span>{{ ui.references || 'References' }}</span></h2>
             <div class="refs">
                 <div v-for="ref in cv.references" :key="ref.id" class="ref-card">
                     <strong>{{ ref.name }}</strong>
@@ -151,7 +152,9 @@ const ui = computed(() => props.cv?.ui || {});
     border-radius: 0 12px 12px 0;
 }
 .pill {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     margin: 0 0 0.85rem;
     padding: 0.35rem 1rem;
     border-radius: 999px;

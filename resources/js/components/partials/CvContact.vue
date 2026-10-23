@@ -1,4 +1,6 @@
 <script setup>
+import CvSectionIcon from './CvSectionIcon.vue';
+
 defineProps({
     profile: { type: Object, default: () => ({}) },
     title: { type: String, default: 'Contact' },
@@ -8,7 +10,7 @@ defineProps({
 
 <template>
     <section class="cv-contact">
-        <h2 class="cv-heading">{{ title }}</h2>
+        <h2 class="cv-heading"><CvSectionIcon name="contact" /><span>{{ title }}</span></h2>
         <ul>
             <li v-if="profile.email">
                 <span class="label">{{ labels.email || 'Email' }}</span>
@@ -43,7 +45,9 @@ li { margin-bottom: 0.7rem; font-size: 0.86rem; line-height: 1.35; }
 }
 a { color: inherit; text-decoration: none; word-break: break-all; }
 .cv-heading {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     margin: 0 0 0.85rem;
     padding: 0.35rem 1rem;
     border-radius: 999px;
