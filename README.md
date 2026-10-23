@@ -77,6 +77,7 @@ Preview: `http://127.0.0.1:8000/?layout=horizon`
 | Menu | What you edit |
 |------|----------------|
 | Personal & Contact | Name, title, photo, phones, personal data (EN + KM), **favorite layout** |
+| CV PDF File | Upload PDF for the public **Download CV** button |
 | Skills | Add / edit / delete skills & levels |
 | Languages | Add / edit / delete languages (0–10) |
 | Education | Schools & degrees |

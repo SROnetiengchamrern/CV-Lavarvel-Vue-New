@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AwsCourseController;
 use App\Http\Controllers\Admin\CoverLetterController as AdminCoverLetterController;
+use App\Http\Controllers\Admin\CvFileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
@@ -16,11 +17,13 @@ use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\CvController;
+use App\Http\Controllers\CvDownloadController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CvController::class, 'index'])->name('cv');
+Route::get('/cv/download', [CvDownloadController::class, 'download'])->name('cv.download');
 Route::get('/cover-letter', [CoverLetterController::class, 'show'])->name('cover-letter');
 Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 Route::get('/media/{path}', [MediaController::class, 'show'])
@@ -43,6 +46,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('cover-letter', [AdminCoverLetterController::class, 'edit'])->name('cover-letter.edit');
         Route::put('cover-letter', [AdminCoverLetterController::class, 'update'])->name('cover-letter.update');
+
+        Route::get('cv-file', [CvFileController::class, 'edit'])->name('cv-file.edit');
+        Route::put('cv-file', [CvFileController::class, 'update'])->name('cv-file.update');
+        Route::delete('cv-file/{cvFile}', [CvFileController::class, 'destroy'])->name('cv-file.destroy');
 
         Route::get('skill-categories', [SkillCategoryController::class, 'index'])->name('skill-categories.index');
         Route::post('skill-categories', [SkillCategoryController::class, 'store'])->name('skill-categories.store');

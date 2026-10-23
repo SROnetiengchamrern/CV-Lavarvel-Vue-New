@@ -1,10 +1,11 @@
 <script setup>
-import { computed, provide, watchEffect } from 'vue';
+import { computed, provide, ref, watchEffect } from 'vue';
 import ClassicLayout from './layouts/ClassicLayout.vue';
 import EmeraldLayout from './layouts/EmeraldLayout.vue';
 import HorizonLayout from './layouts/HorizonLayout.vue';
 import MinimalLayout from './layouts/MinimalLayout.vue';
 import MirrorLayout from './layouts/MirrorLayout.vue';
+import CvCertificateGallery from './partials/CvCertificateGallery.vue';
 import CvDocViewer from './partials/CvDocViewer.vue';
 
 const props = defineProps({
@@ -25,6 +26,9 @@ const layouts = {
 const ui = computed(() => props.cv?.ui || {});
 const locale = computed(() => props.cv?.locale || 'en');
 const locales = computed(() => props.cv?.locales || { en: 'English', km: 'ខ្មែរ' });
+const certificates = computed(() => props.cv?.certificates || []);
+const cvDownloadUrl = computed(() => props.cv?.cv_download_url || null);
+const galleryOpen = ref(false);
 
 provide('cvUi', ui);
 
@@ -42,25 +46,8 @@ const layoutKey = computed(() => {
 
 const activeLayout = computed(() => layouts[layoutKey.value]);
 
-const layoutLabel = computed(() => {
-    const labels = {
-        classic: 'Classic Navy',
-        emerald: 'Emerald Gold',
-        horizon: 'Horizon Banner',
-        minimal: 'Minimal Blue',
-        mirror: 'Mirror Slate',
-    };
-    return labels[layoutKey.value] || layoutKey.value;
-});
-
 function printCv() {
     window.print();
-}
-
-function previewLayout(key) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('layout', key);
-    window.location.href = url.toString();
 }
 
 function switchLocale(code) {
@@ -72,40 +59,40 @@ function switchLocale(code) {
 <template>
     <div class="page-wrap">
         <div class="toolbar no-print">
-            <div class="layout-switch">
-                <span class="layout-label">{{ ui.layout || 'Layout' }}:</span>
+            <div class="lang-switch" :aria-label="ui.language || 'Language'">
                 <button
-                    v-for="key in Object.keys(layouts)"
-                    :key="key"
+                    v-for="(label, code) in locales"
+                    :key="code"
                     type="button"
-                    class="layout-chip"
-                    :class="{ active: layoutKey === key }"
-                    @click="previewLayout(key)"
+                    class="lang-chip"
+                    :class="{ active: locale === code }"
+                    @click="switchLocale(code)"
                 >
-                    {{ key }}
+                    {{ label }}
                 </button>
             </div>
             <div class="toolbar-actions">
-                <div class="lang-switch" :aria-label="ui.language || 'Language'">
-                    <button
-                        v-for="(label, code) in locales"
-                        :key="code"
-                        type="button"
-                        class="lang-chip"
-                        :class="{ active: locale === code }"
-                        @click="switchLocale(code)"
-                    >
-                        {{ label }}
-                    </button>
-                </div>
-                <span class="current">{{ layoutLabel }}</span>
+                <a
+                    v-if="cvDownloadUrl"
+                    :href="cvDownloadUrl"
+                    class="toolbar-link"
+                    download
+                >{{ ui.download_cv || 'Download CV' }}</a>
+                <button type="button" class="toolbar-btn" @click="galleryOpen = true">
+                    {{ ui.certificates || 'Certificates' }}
+                </button>
                 <a href="/cover-letter" class="toolbar-link">{{ ui.cover_letter || 'Cover Letter' }}</a>
-                <a href="/admin/login" class="toolbar-link">{{ ui.admin || 'Admin' }}</a>
                 <button type="button" class="toolbar-btn" @click="printCv">{{ ui.print_pdf || 'Print / PDF' }}</button>
             </div>
         </div>
 
         <component :is="activeLayout" :cv="cv" />
+        <CvCertificateGallery
+            :open="galleryOpen"
+            :items="certificates"
+            :ui="ui"
+            @close="galleryOpen = false"
+        />
         <CvDocViewer />
     </div>
 </template>
@@ -127,21 +114,6 @@ function switchLocale(code) {
     flex-wrap: wrap;
 }
 
-.layout-switch {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.layout-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #5a5a72;
-    margin-right: 0.25rem;
-}
-
-.layout-chip,
 .lang-chip {
     border: 1px solid #cfd5e2;
     background: #fff;
@@ -154,11 +126,6 @@ function switchLocale(code) {
     cursor: pointer;
 }
 
-.layout-chip {
-    text-transform: capitalize;
-}
-
-.layout-chip.active,
 .lang-chip.active {
     background: #1a1a4b;
     border-color: #1a1a4b;
@@ -175,12 +142,6 @@ function switchLocale(code) {
     flex-wrap: wrap;
     gap: 0.55rem;
     align-items: center;
-}
-
-.current {
-    font-size: 0.78rem;
-    color: #5a5a72;
-    font-weight: 600;
 }
 
 .toolbar-link,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2026 at 06:41 AM
+-- Generation Time: Oct 23, 2026 at 07:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -100,6 +100,32 @@ CREATE TABLE `course_certificates` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cv_files`
+--
+
+CREATE TABLE `cv_files` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL DEFAULT 'CV',
+  `title_km` varchar(255) DEFAULT NULL,
+  `file_path` varchar(255) NOT NULL,
+  `original_name` varchar(255) DEFAULT NULL,
+  `mime_type` varchar(255) DEFAULT NULL,
+  `file_size` bigint(20) UNSIGNED DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cv_files`
+--
+
+INSERT INTO `cv_files` (`id`, `title`, `title_km`, `file_path`, `original_name`, `mime_type`, `file_size`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'CV', NULL, 'cv-files/mhaSMSCeaDVmaB4Fui2fqmoqtexFVseFZnWmOpe7.pdf', 'Tieng-Chamrern.pdf', 'application/pdf', 19870709, 1, '2026-10-22 22:06:08', '2026-10-22 22:06:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cv_references`
 --
 
@@ -172,6 +198,15 @@ CREATE TABLE `education_documents` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `education_documents`
+--
+
+INSERT INTO `education_documents` (`id`, `education_id`, `title`, `file_path`, `original_name`, `mime_type`, `file_size`, `sort_order`, `created_at`, `updated_at`) VALUES
+(6, 22, 'CamScanner 10-19-2024 13.36', 'certificates/degrees/8e5iKT7KW2VYMyc7b4AcOVYo4LtferTu5JC7unpz.jpg', 'CamScanner 10-19-2024 13.36.jpg', 'image/jpeg', 457587, 1, '2026-10-22 22:08:28', '2026-10-22 22:08:28'),
+(7, 22, '20240316_143435', 'certificates/degrees/L0vOoHMcqRK0yJd8hhTlwBQkoG25ld9uYhDjgpGh.jpg', '20240316_143435.jpg', 'image/jpeg', 1396489, 2, '2026-10-22 22:08:44', '2026-10-22 22:08:44'),
+(8, 23, 'IMG_20221021_213801_498', 'certificates/degrees/BDP4rHx1F2WpEOSf5q6VXDfaXbSpk1x6A42TNpbI.jpg', 'IMG_20221021_213801_498.jpg', 'image/jpeg', 88808, 2, '2026-10-22 22:09:07', '2026-10-22 22:09:07');
 
 -- --------------------------------------------------------
 
@@ -337,7 +372,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (15, '2026_10_22_070322_create_course_certificates_table', 4),
 (16, '2026_10_22_071011_create_education_documents_table', 5),
 (17, '2026_10_23_033714_add_cover_letter_to_profiles_table', 6),
-(18, '2026_10_23_040000_add_khmer_fields_to_cv_tables', 7);
+(18, '2026_10_23_040000_add_khmer_fields_to_cv_tables', 7),
+(19, '2026_10_23_050000_create_cv_files_table', 8);
 
 -- --------------------------------------------------------
 
@@ -397,7 +433,7 @@ CREATE TABLE `profiles` (
 --
 
 INSERT INTO `profiles` (`id`, `full_name`, `full_name_km`, `title`, `title_km`, `photo`, `email`, `phone_primary`, `phone_secondary`, `address`, `address_km`, `gender`, `gender_km`, `date_of_birth`, `marital_status`, `marital_status_km`, `nationality`, `nationality_km`, `place_of_birth`, `place_of_birth_km`, `layout`, `cover_letter_enabled`, `cover_letter_salutation`, `cover_letter_salutation_km`, `cover_letter_body`, `cover_letter_body_km`, `cover_letter_closing`, `cover_letter_closing_km`, `cover_letter_signature`, `cover_letter_signature_km`, `created_at`, `updated_at`) VALUES
-(5, 'Tieng Chamrern', 'ទៀង​ ចំរើន', 'Web Developer', 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ', 'images/profile.jpg', 'tiengchamrern2@gmail.com', '096 779 7762/078 783 645', NULL, 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia', 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា', 'Male', 'ប្រុស', '10-November-2003', 'Single', 'នៅលីវ', 'Khmer', 'ខ្មែរ', 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.', 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម', 'classic', 1, 'Dear Sir / Madam,', 'សូមគោរព ឯកឧត្តម / លោក / លោកស្រី,', 'I am writing to express my strong interest in the Web Developer position. I hold a Bachelor\'s Degree in Management Information Systems and have more than three years of practical experience building web applications.\r\n\r\nAt Khmer Gaming Software Solution Co., Ltd., I have worked on front-end and back-end development using HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel, and Vue.js, including UI/UX design and platform integration.\r\n\r\nI also have experience with technical troubleshooting, hardware and software repair for laptops and desktops, smartphones, and basic office network setup.', 'ខ្ញុំសូមសរសេរមកដើម្បីបង្ហាញពីចំណាប់អារម្មណ៍ខ្លាំងរបស់ខ្ញុំចំពោះតួនាទីអ្នកអភិវឌ្ឍន៍គេហទំព័រ។ ខ្ញុំមានសញ្ញាបត្របរិញ្ញាបត្រផ្នែកប្រព័ន្ធព័ត៌មានគ្រប់គ្រង (MIS) និងមានបទពិសោធន៍ជាង ៣ ឆ្នាំក្នុងការបង្កើតកម្មវិធីគេហទំព័រ។\r\n\r\nនៅក្រុមហ៊ុន Khmer Gaming Software Solution Co., Ltd. ខ្ញុំបានធ្វើការអភិវឌ្ឍន៍ front-end និង back-end ដោយប្រើ HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel និង Vue.js រួមទាំងការរចនា UI/UX និងការភ្ជាប់ប្រព័ន្ធ។\r\n\r\nខ្ញុំក៏មានបទពិសោធន៍ក្នុងការដោះស្រាយបញ្ហាបច្ចេកទេស ការជួសជុលហាត់វែរ និងសូហ្វវែរសម្រាប់កុំព្យូទ័រ ស្មាតហ្វូន និងការដំឡើងបណ្តាញការិយាល័យមូលដ្ឋាន។', 'I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\r\n\r\nThank you for your time and consideration.', 'ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\r\n\r\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។', 'Tieng Chamrern', 'ទៀង ចំរើន', '2026-10-22 20:55:03', '2026-10-22 21:39:15');
+(5, 'Tieng Chamrern', 'ទៀង​ ចំរើន', 'Web Developer', 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ', 'profiles/P97wGZC2sviXTL0UAIceDqU3ZsSIod7Qwwi9iWLe.jpg', 'tiengchamrern2@gmail.com', '096 779 7762/078 783 645', NULL, 'Phum Sepese, Sangkat Teuk Thla, Khan Sansokh, Phnom Penh, Cambodia', 'ភូមិសេប៉េសេ សង្កាត់ទឹកថ្លា ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ កម្ពុជា', 'Male', 'ប្រុស', '10-November-2003', 'Single', 'នៅលីវ', 'Khmer', 'ខ្មែរ', 'Taing Srey Village, Mepring Commune, Batheay District, Kompong Cham Province.', 'ភូមិតាំងស្រី ឃុំមេព្រីង ស្រុកបាធាយ ខេត្តកំពង់ចាម', 'classic', 1, 'Dear Sir / Madam,', 'សូមគោរព ឯកឧត្តម / លោក / លោកស្រី,', 'I am writing to express my strong interest in the Web Developer position. I hold a Bachelor\'s Degree in Management Information Systems and have more than three years of practical experience building web applications.\r\n\r\nAt Khmer Gaming Software Solution Co., Ltd., I have worked on front-end and back-end development using HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel, and Vue.js, including UI/UX design and platform integration.\r\n\r\nI also have experience with technical troubleshooting, hardware and software repair for laptops and desktops, smartphones, and basic office network setup.', 'ខ្ញុំសូមសរសេរមកដើម្បីបង្ហាញពីចំណាប់អារម្មណ៍ខ្លាំងរបស់ខ្ញុំចំពោះតួនាទីអ្នកអភិវឌ្ឍន៍គេហទំព័រ។ ខ្ញុំមានសញ្ញាបត្របរិញ្ញាបត្រផ្នែកប្រព័ន្ធព័ត៌មានគ្រប់គ្រង (MIS) និងមានបទពិសោធន៍ជាង ៣ ឆ្នាំក្នុងការបង្កើតកម្មវិធីគេហទំព័រ។\r\n\r\nនៅក្រុមហ៊ុន Khmer Gaming Software Solution Co., Ltd. ខ្ញុំបានធ្វើការអភិវឌ្ឍន៍ front-end និង back-end ដោយប្រើ HTML, CSS, JavaScript, PHP, Node.js, React.js, Laravel និង Vue.js រួមទាំងការរចនា UI/UX និងការភ្ជាប់ប្រព័ន្ធ។\r\n\r\nខ្ញុំក៏មានបទពិសោធន៍ក្នុងការដោះស្រាយបញ្ហាបច្ចេកទេស ការជួសជុលហាត់វែរ និងសូហ្វវែរសម្រាប់កុំព្យូទ័រ ស្មាតហ្វូន និងការដំឡើងបណ្តាញការិយាល័យមូលដ្ឋាន។', 'I would welcome the opportunity to discuss how I can contribute to your team. Please feel free to contact me by phone or email.\r\n\r\nThank you for your time and consideration.', 'ខ្ញុំសូមស្វាគមន៍ឱកាសពិភាក្សាអំពីរបៀបដែលខ្ញុំអាចចូលរួមចំណែកក្នុងក្រុមរបស់លោក/លោកស្រី។ សូមទំនាក់ទំនងមកខ្ញុំតាមទូរស័ព្ទ ឬអ៊ីមែល។\r\n\r\nសូមអរគុណចំពោះពេលវេលា និងការពិចារណារបស់លោក/លោកស្រី។', 'Tieng Chamrern', 'ទៀង ចំរើន', '2026-10-22 20:55:03', '2026-10-22 22:10:27');
 
 -- --------------------------------------------------------
 
@@ -419,9 +455,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('0alahVEfIJQH3imsjNIW9ThsEfQH3uyIyllTVHFQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVjBRRjdwbGlzMkJ2bThEN1BpbWtYVmhRb0dyQWlYZERjYmQ1V2dLTyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjQ6IjU4OGZlOTRkMjkxZGRkOGJjODVhYTM5YWMwOGMxMWViNWRiMDUzOWY0ZGFiYTlkNTAwZWNiMWFjMjk1NzZiZGYiO3M6NjoibG9jYWxlIjtzOjI6ImVuIjt9', 1792730359),
-('KmqJQMR2HGWBeBuas6nYtUj6j6O67K2HTbGAbxtt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8115', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiUXdSWmV0RG9HWmM4b2hGblJUdm1XaXp0Z3ZSUUlaTVZDUG5QOGhaZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1792724737),
-('NNb8eaUAnEE8b9Tr9y8jGhKZPSHFWkKYA2HcFxD5', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8115', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiQThFZnpLWlJJalN3QmRaZ1JzYlRpSU9yenJhTTlManJHbmxmS1FMdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1792724758);
+('0alahVEfIJQH3imsjNIW9ThsEfQH3uyIyllTVHFQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVjBRRjdwbGlzMkJ2bThEN1BpbWtYVmhRb0dyQWlYZERjYmQ1V2dLTyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjQ6IjU4OGZlOTRkMjkxZGRkOGJjODVhYTM5YWMwOGMxMWViNWRiMDUzOWY0ZGFiYTlkNTAwZWNiMWFjMjk1NzZiZGYiO3M6NjoibG9jYWxlIjtzOjI6ImVuIjt9', 1792732355);
 
 -- --------------------------------------------------------
 
@@ -596,6 +630,12 @@ ALTER TABLE `course_certificates`
   ADD KEY `course_certificates_aws_course_id_foreign` (`aws_course_id`);
 
 --
+-- Indexes for table `cv_files`
+--
+ALTER TABLE `cv_files`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cv_references`
 --
 ALTER TABLE `cv_references`
@@ -721,6 +761,12 @@ ALTER TABLE `course_certificates`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `cv_files`
+--
+ALTER TABLE `cv_files`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `cv_references`
 --
 ALTER TABLE `cv_references`
@@ -736,7 +782,7 @@ ALTER TABLE `education`
 -- AUTO_INCREMENT for table `education_documents`
 --
 ALTER TABLE `education_documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `experiences`
@@ -772,7 +818,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `profiles`

@@ -60,7 +60,6 @@ function switchLocale(code) {
                         {{ label }}
                     </button>
                 </div>
-                <a href="/admin/cover-letter">{{ ui.edit || 'Edit' }}</a>
                 <button type="button" @click="printLetter">{{ ui.print_pdf || 'Print / PDF' }}</button>
             </div>
         </div>

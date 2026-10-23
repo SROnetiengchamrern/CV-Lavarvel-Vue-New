@@ -1,16 +1,35 @@
 <script setup>
-import { computed, onMounted, onUnmounted } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useDocViewer } from '../../composables/useDocViewer';
 
 const { state, closeDoc } = useDocViewer();
 
 const isOpen = computed(() => state.open && state.doc);
+const zoom = ref(1);
 
 function onKey(e) {
     if (e.key === 'Escape') {
         closeDoc();
     }
 }
+
+function zoomIn() {
+    zoom.value = Math.min(3, Math.round((zoom.value + 0.25) * 100) / 100);
+}
+
+function zoomOut() {
+    zoom.value = Math.max(0.5, Math.round((zoom.value - 0.25) * 100) / 100);
+}
+
+function zoomReset() {
+    zoom.value = 1;
+}
+
+watch(isOpen, (open) => {
+    if (open) {
+        zoom.value = 1;
+    }
+});
 
 onMounted(() => window.addEventListener('keydown', onKey));
 onUnmounted(() => {
@@ -36,18 +55,24 @@ onUnmounted(() => {
                         <p>{{ state.doc.original_name }}</p>
                     </div>
                     <div class="viewer-actions">
+                        <template v-if="state.doc.is_image">
+                            <button type="button" class="viewer-btn" @click="zoomOut">−</button>
+                            <button type="button" class="viewer-btn" @click="zoomReset">{{ Math.round(zoom * 100) }}%</button>
+                            <button type="button" class="viewer-btn" @click="zoomIn">+</button>
+                        </template>
                         <a class="viewer-btn" :href="state.doc.url" target="_blank" rel="noopener">{{ state.doc.labels?.open_tab || 'Open tab' }}</a>
                         <a class="viewer-btn" :href="state.doc.url" download>{{ state.doc.labels?.download || 'Download' }}</a>
                         <button type="button" class="viewer-btn close" @click="closeDoc">{{ state.doc.labels?.close || 'Close' }}</button>
                     </div>
                 </header>
 
-                <div class="viewer-body">
+                <div class="viewer-body" :class="{ scrollable: state.doc.is_image }">
                     <img
                         v-if="state.doc.is_image"
                         :src="state.doc.url"
                         :alt="state.doc.original_name"
                         class="viewer-image"
+                        :style="{ transform: `scale(${zoom})` }"
                     />
                     <iframe
                         v-else
@@ -95,6 +120,7 @@ onUnmounted(() => {
     padding: 0.9rem 1rem;
     border-bottom: 1px solid #e8ebf2;
     background: #f8fafc;
+    flex-shrink: 0;
 }
 .viewer-head strong {
     display: block;
@@ -133,13 +159,21 @@ onUnmounted(() => {
     flex: 1;
     min-height: 0;
     background: #111827;
-    display: grid;
-    place-items: center;
+}
+.viewer-body.scrollable {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+    text-align: center;
 }
 .viewer-image {
+    display: inline-block;
     max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    vertical-align: top;
+    transform-origin: top center;
+    transition: transform 0.15s ease;
 }
 .viewer-frame {
     width: 100%;

@@ -170,4 +170,48 @@ class CvLocalizer
             'certificates' => $item->certificates,
         ])->values();
     }
+
+    /**
+     * All uploaded certificate images/PDFs (AWS courses + degree documents).
+     */
+    public static function certificateGallery(): array
+    {
+        $items = [];
+
+        $courses = AwsCourse::with('certificates')->orderBy('sort_order')->orderBy('title')->get();
+        foreach ($courses as $course) {
+            $courseTitle = Locale::pick($course->title, $course->title_km) ?: $course->title;
+            foreach ($course->certificates as $cert) {
+                $items[] = [
+                    'id' => 'aws-'.$cert->id,
+                    'title' => $cert->title ?: $courseTitle,
+                    'subtitle' => $courseTitle,
+                    'group' => 'aws',
+                    'url' => $cert->url,
+                    'is_image' => $cert->is_image,
+                    'is_pdf' => $cert->is_pdf,
+                    'original_name' => $cert->original_name,
+                ];
+            }
+        }
+
+        $education = Education::with('documents')->orderBy('sort_order')->get();
+        foreach ($education as $edu) {
+            $institution = Locale::pick($edu->institution, $edu->institution_km) ?: $edu->institution;
+            foreach ($edu->documents as $doc) {
+                $items[] = [
+                    'id' => 'edu-'.$doc->id,
+                    'title' => $doc->title ?: $institution,
+                    'subtitle' => $institution,
+                    'group' => 'education',
+                    'url' => $doc->url,
+                    'is_image' => $doc->is_image,
+                    'is_pdf' => $doc->is_pdf,
+                    'original_name' => $doc->original_name,
+                ];
+            }
+        }
+
+        return $items;
+    }
 }

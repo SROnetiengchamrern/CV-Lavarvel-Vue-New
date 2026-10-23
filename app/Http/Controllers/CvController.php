@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AwsCourse;
+use App\Models\CvFile;
 use App\Models\CvReference;
 use App\Models\Education;
 use App\Models\Experience;
@@ -42,6 +43,8 @@ class CvController extends Controller
             ),
             'interests' => CvLocalizer::interests(Interest::orderBy('sort_order')->get()),
             'references' => CvLocalizer::references(CvReference::orderBy('sort_order')->get()),
+            'certificates' => CvLocalizer::certificateGallery(),
+            'cv_download_url' => CvFile::active() ? route('cv.download') : null,
         ];
 
         return view('cv', [
