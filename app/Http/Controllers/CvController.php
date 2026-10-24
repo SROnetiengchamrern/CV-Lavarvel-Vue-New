@@ -14,6 +14,7 @@ use App\Models\SkillCategory;
 use App\Models\Training;
 use App\Support\CvLocalizer;
 use App\Support\Locale;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class CvController extends Controller
@@ -44,11 +45,22 @@ class CvController extends Controller
             'interests' => CvLocalizer::interests(Interest::orderBy('sort_order')->get()),
             'references' => CvLocalizer::references(CvReference::orderBy('sort_order')->get()),
             'certificates' => CvLocalizer::certificateGallery(),
-            'cv_download_url' => CvFile::active() ? route('cv.download') : null,
+            'cv_download_url' => self::cvDownloadUrl(),
         ];
 
         return view('cv', [
             'cv' => $cv,
         ]);
+    }
+
+    private static function cvDownloadUrl(): ?string
+    {
+        $file = CvFile::active();
+
+        if (! $file || ! $file->file_path || ! Storage::disk('public')->exists($file->file_path)) {
+            return null;
+        }
+
+        return route('cv.download');
     }
 }
