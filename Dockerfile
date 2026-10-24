@@ -14,6 +14,9 @@ FROM dunglas/frankenphp:1-php8.2
 
 RUN install-php-extensions pdo_pgsql pdo_mysql intl zip opcache
 
+# Raise PHP upload limits (default 8M blocks ~20MB CV PDF)
+COPY conf/php/uploads.ini /usr/local/etc/php/conf.d/zz-uploads.ini
+
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV APP_ENV=production
 ENV APP_DEBUG=false
