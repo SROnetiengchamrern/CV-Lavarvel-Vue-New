@@ -52,5 +52,7 @@ if [ "${RUN_SEEDERS:-false}" = "true" ]; then
   php artisan db:seed --force
 fi
 
-echo "==> Starting FrankenPHP"
-exec frankenphp run --config /etc/caddy/Caddyfile
+# FrankenPHP binary is blocked on some Render free hosts (exit 126 / Operation not permitted).
+# PHP itself works (migrate/seed already ran), so serve with artisan.
+echo "==> Starting Laravel on 0.0.0.0:${PORT}"
+exec php artisan serve --host=0.0.0.0 --port="${PORT}"
