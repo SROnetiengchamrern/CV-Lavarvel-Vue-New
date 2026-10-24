@@ -45,6 +45,17 @@ class ImportCvSqlCommand extends Command
         'cv_files',
     ];
 
+    /** MySQL dump uses 0/1; PostgreSQL boolean columns need true/false */
+    /** @var list<string> */
+    private array $booleanColumns = [
+        'is_completed',
+        'show_bar',
+        'show_bars',
+        'accent',
+        'cover_letter_enabled',
+        'is_active',
+    ];
+
     public function handle(): int
     {
         $path = $this->option('path') ?: database_path('chamrern_cv.sql');
@@ -143,9 +154,171 @@ class ImportCvSqlCommand extends Command
         if ($driver === 'pgsql') {
             // MySQL string escapes -> SQL-standard quotes
             $statement = $this->mysqlEscapesToSqlStandard($statement);
+            // 0/1 integers -> true/false for boolean columns
+            $statement = $this->castBooleanLiteralsForPostgres($statement);
         }
 
         return $statement;
+    }
+
+    /**
+     * Rewrite 0/1 in boolean column positions to false/true for PostgreSQL.
+     */
+    private function castBooleanLiteralsForPostgres(string $statement): string
+    {
+        if (! preg_match(
+            '/^(INSERT INTO\s+[a-z0-9_]+\s*)\(([^)]+)\)(\s*VALUES\s*)(.+);$/is',
+            trim($statement),
+            $m
+        )) {
+            return $statement;
+        }
+
+        $columns = array_map(
+            static fn (string $col): string => strtolower(trim($col, " \t\n\r\0\x0B\"'`")),
+            explode(',', $m[2])
+        );
+
+        $boolIndexes = [];
+        foreach ($columns as $i => $name) {
+            if (in_array($name, $this->booleanColumns, true)) {
+                $boolIndexes[] = $i;
+            }
+        }
+
+        if ($boolIndexes === []) {
+            return $statement;
+        }
+
+        $valuesSql = rtrim(trim($m[4]), ';');
+        $rows = $this->splitValueRows($valuesSql);
+        $convertedRows = [];
+
+        foreach ($rows as $row) {
+            $row = trim($row);
+            if ($row === '') {
+                continue;
+            }
+            // Strip wrapping parentheses
+            if ($row[0] === '(') {
+                $row = substr($row, 1, -1);
+            }
+            $values = $this->splitSqlValues($row);
+            foreach ($boolIndexes as $idx) {
+                if (! array_key_exists($idx, $values)) {
+                    continue;
+                }
+                $raw = strtolower(trim($values[$idx]));
+                if ($raw === '1' || $raw === 'true') {
+                    $values[$idx] = 'true';
+                } elseif ($raw === '0' || $raw === 'false') {
+                    $values[$idx] = 'false';
+                }
+            }
+            $convertedRows[] = '('.implode(', ', $values).')';
+        }
+
+        return $m[1].'('.$m[2].')'.$m[3].implode(",\n", $convertedRows).';';
+    }
+
+    /**
+     * Split "(...), (...)" value groups respecting quotes.
+     *
+     * @return list<string>
+     */
+    private function splitValueRows(string $valuesSql): array
+    {
+        $rows = [];
+        $len = strlen($valuesSql);
+        $depth = 0;
+        $inString = false;
+        $start = 0;
+
+        for ($i = 0; $i < $len; $i++) {
+            $ch = $valuesSql[$i];
+
+            if ($inString) {
+                if ($ch === "'" && ($i + 1 < $len && $valuesSql[$i + 1] === "'")) {
+                    $i++;
+
+                    continue;
+                }
+                if ($ch === "'") {
+                    $inString = false;
+                }
+
+                continue;
+            }
+
+            if ($ch === "'") {
+                $inString = true;
+
+                continue;
+            }
+
+            if ($ch === '(') {
+                if ($depth === 0) {
+                    $start = $i;
+                }
+                $depth++;
+
+                continue;
+            }
+
+            if ($ch === ')') {
+                $depth--;
+                if ($depth === 0) {
+                    $rows[] = substr($valuesSql, $start, $i - $start + 1);
+                }
+            }
+        }
+
+        return $rows;
+    }
+
+    /**
+     * Split a single VALUES row into fields respecting quotes.
+     *
+     * @return list<string>
+     */
+    private function splitSqlValues(string $row): array
+    {
+        $values = [];
+        $len = strlen($row);
+        $inString = false;
+        $start = 0;
+
+        for ($i = 0; $i < $len; $i++) {
+            $ch = $row[$i];
+
+            if ($inString) {
+                if ($ch === "'" && ($i + 1 < $len && $row[$i + 1] === "'")) {
+                    $i++;
+
+                    continue;
+                }
+                if ($ch === "'") {
+                    $inString = false;
+                }
+
+                continue;
+            }
+
+            if ($ch === "'") {
+                $inString = true;
+
+                continue;
+            }
+
+            if ($ch === ',') {
+                $values[] = trim(substr($row, $start, $i - $start));
+                $start = $i + 1;
+            }
+        }
+
+        $values[] = trim(substr($row, $start));
+
+        return $values;
     }
 
     /**
