@@ -33,13 +33,24 @@ fi
 export PORT="${PORT:-80}"
 echo "==> Listening on port ${PORT}"
 
+# Avoid fragile DB sessions/cache on free tier (ephemeral disk is fine for a CV site)
+export SESSION_DRIVER="${SESSION_DRIVER:-file}"
+export CACHE_STORE="${CACHE_STORE:-file}"
+export SESSION_SECURE_COOKIE="${SESSION_SECURE_COOKIE:-true}"
+
+mkdir -p storage/framework/sessions storage/framework/cache/data storage/logs
+chmod -R 775 storage bootstrap/cache || true
+
 echo "==> Discover packages"
 php artisan package:discover --ansi || true
 
 echo "==> Link storage"
 php artisan storage:link || true
 
-echo "==> Cache config/routes/views"
+echo "==> Clear stale caches then rebuild"
+php artisan config:clear || true
+php artisan route:clear || true
+php artisan view:clear || true
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
