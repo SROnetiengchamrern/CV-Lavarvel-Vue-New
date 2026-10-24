@@ -23,10 +23,16 @@ ENV SERVER_NAME=:80
 WORKDIR /app
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Install PHP deps at build time (skip artisan scripts — no APP_KEY yet)
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+
 COPY . /app
 COPY --from=frontend /app/public/build /app/public/build
 
-RUN mkdir -p storage/app/public \
+RUN composer dump-autoload --optimize --no-scripts \
+    && mkdir -p storage/app/public \
         storage/framework/cache \
         storage/framework/sessions \
         storage/framework/views \
@@ -34,7 +40,7 @@ RUN mkdir -p storage/app/public \
         bootstrap/cache \
     && chmod +x /app/scripts/*.sh \
     && sed -i 's/\r$//' /app/scripts/*.sh \
-    && chown -R www-data:www-data /app/storage /app/bootstrap/cache
+    && chown -R www-data:www-data /app/storage /app/bootstrap/cache /app/vendor
 
 COPY conf/Caddyfile /etc/caddy/Caddyfile
 COPY conf/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
