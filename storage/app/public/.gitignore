@@ -1,2 +1,8 @@
 *
 !.gitignore
+!profiles/
+!profiles/**
+!certificates/
+!certificates/**
+# Large CV PDF stays local / re-upload on host
+cv-files/

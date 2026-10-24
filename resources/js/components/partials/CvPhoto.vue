@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, unref } from 'vue';
+import { computed, inject, ref, unref } from 'vue';
 import { profileInitials, resolvePhotoFromProfile } from '../../composables/useCv';
 import { useDocViewer } from '../../composables/useDocViewer';
 
@@ -10,12 +10,13 @@ const props = defineProps({
 
 const photo = computed(() => resolvePhotoFromProfile(props.profile));
 const initials = computed(() => profileInitials(props.profile));
+const broken = ref(false);
 const { openDoc } = useDocViewer();
 const uiRef = inject('cvUi', null);
 const ui = computed(() => (uiRef ? unref(uiRef) : {}) || {});
 
 function openPhoto() {
-    if (!photo.value) {
+    if (!photo.value || broken.value) {
         return;
     }
 
@@ -31,7 +32,7 @@ function openPhoto() {
 
 <template>
     <button
-        v-if="photo"
+        v-if="photo && !broken"
         type="button"
         class="cv-photo clickable no-print-border"
         :class="`size-${size}`"
@@ -41,7 +42,7 @@ function openPhoto() {
         <img
             :src="photo"
             :alt="profile.full_name"
-            @error="($event.target.style.display = 'none')"
+            @error="broken = true"
         />
     </button>
     <div v-else class="cv-photo" :class="`size-${size}`">

@@ -32,6 +32,7 @@ class CvLocalizer
             'full_name' => Locale::pick($profile->full_name, $profile->full_name_km),
             'title' => Locale::pick($profile->title, $profile->title_km),
             'photo' => $profile->photo,
+            'photo_url' => $profile->photo_url,
             'email' => $profile->email,
             'phone_primary' => $profile->phone_primary,
             'phone_secondary' => $profile->phone_secondary,

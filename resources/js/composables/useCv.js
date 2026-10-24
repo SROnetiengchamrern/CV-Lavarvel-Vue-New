@@ -3,24 +3,7 @@ import { computed } from 'vue';
 export function useCv(cvRef) {
     const profile = computed(() => cvRef.value?.profile || cvRef.value?.profile || {});
 
-    const resolvedPhoto = computed(() => {
-        const photo = (typeof cvRef.value === 'object' && cvRef.value?.profile?.photo)
-            || null;
-
-        if (!photo) {
-            return null;
-        }
-        if (photo.startsWith('images/')) {
-            return `/${photo}`;
-        }
-        if (photo.startsWith('profiles/')) {
-            return `/storage/${photo}`;
-        }
-        if (photo.startsWith('http') || photo.startsWith('/')) {
-            return photo;
-        }
-        return `/${photo}`;
-    });
+    const resolvedPhoto = computed(() => resolvePhotoFromProfile(cvRef.value?.profile));
 
     const initials = computed(() => {
         const name = cvRef.value?.profile?.full_name || 'TC';
@@ -36,15 +19,30 @@ export function useCv(cvRef) {
 }
 
 export function resolvePhotoFromProfile(profile) {
-    if (!profile?.photo) {
+    if (!profile) {
         return null;
     }
+
+    // Prefer server-built URL when available
+    if (profile.photo_url) {
+        return profile.photo_url;
+    }
+
     const photo = profile.photo;
+    if (!photo) {
+        // Static fallback shipped in public/images
+        return '/images/profile.jpg';
+    }
     if (photo.startsWith('images/')) {
         return `/${photo}`;
     }
-    if (photo.startsWith('profiles/')) {
-        return `/storage/${photo}`;
+    // Uploaded files are served by MediaController at /media/{path}
+    if (
+        photo.startsWith('profiles/')
+        || photo.startsWith('certificates/')
+        || photo.startsWith('cv-files/')
+    ) {
+        return `/media/${photo}`;
     }
     if (photo.startsWith('http') || photo.startsWith('/')) {
         return photo;

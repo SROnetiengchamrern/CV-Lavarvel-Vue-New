@@ -114,9 +114,15 @@ Railway sign-ups may be blocked — use **[Render](https://render.com)** free in
 
 **Note:** Free web services sleep after ~15 minutes idle (first load can take ~1 minute). Uploaded photos/PDFs can be lost on restart on free disk — re-upload in admin if needed.
 
-## Profile photo
+## Profile photo & media files
 
-Upload in **Admin → Personal & Contact**, or place a file at `public/images/profile.jpg`.
+Uploaded files live in `storage/app/public/` and are served at `/media/...` (not `/storage/...`).
+
+- Profile photo: Admin → Personal & Contact, or `public/images/profile.jpg` fallback
+- Certificates / degrees: committed under `storage/app/public/certificates/` for deploy
+- Large CV PDF (`cv-files/`) is not committed — re-upload in Admin → CV PDF File on the host
+
+If images 404 on Render after SQL import, confirm those folders were pushed to GitHub and redeploy.
 
 ## View uploaded PDF / images
 
