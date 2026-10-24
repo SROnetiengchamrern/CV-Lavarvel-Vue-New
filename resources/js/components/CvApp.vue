@@ -47,10 +47,6 @@ const layoutKey = computed(() => {
 
 const activeLayout = computed(() => layouts[layoutKey.value]);
 
-function printCv() {
-    window.print();
-}
-
 function switchLocale(code) {
     const redirect = encodeURIComponent(window.location.href);
     window.location.href = `/lang/${code}?redirect=${redirect}`;
@@ -84,7 +80,6 @@ function switchLocale(code) {
                     {{ ui.certificates || 'Certificates' }}
                 </button>
                 <a href="/cover-letter" class="toolbar-link">{{ ui.cover_letter || 'Cover Letter' }}</a>
-                <button type="button" class="toolbar-btn" @click="printCv">{{ ui.print_pdf || 'Print / PDF' }}</button>
             </div>
         </div>
 

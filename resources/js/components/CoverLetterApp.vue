@@ -34,10 +34,6 @@ const closingLines = computed(() => {
 
 const photoUrl = computed(() => props.letter.photo_url || null);
 
-function printLetter() {
-    window.print();
-}
-
 function switchLocale(code) {
     const redirect = encodeURIComponent(window.location.href);
     window.location.href = `/lang/${code}?redirect=${redirect}`;
@@ -62,7 +58,6 @@ function switchLocale(code) {
                         <span>{{ label }}</span>
                     </button>
                 </div>
-                <button type="button" @click="printLetter">{{ ui.print_pdf || 'Print / PDF' }}</button>
             </div>
         </div>
 
