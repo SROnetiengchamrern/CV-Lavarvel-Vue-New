@@ -103,7 +103,8 @@ Railway sign-ups may be blocked — use **[Render](https://render.com)** free in
 | `APP_DEBUG` | `false` |
 | `APP_URL` | your Render URL (set after first deploy, then redeploy) |
 | `DB_CONNECTION` | `pgsql` |
-| `DATABASE_URL` | Internal Database URL from step 3 |
+| `DB_URL` | Internal Database URL from step 3 (or `DATABASE_URL`) |
+| *(optional)* `DATABASE_URL` | same as `DB_URL` — both work |
 | `LOG_CHANNEL` | `stderr` |
 | `SESSION_DRIVER` | `database` |
 | `RUN_SEEDERS` | `true` (first deploy only; then set `false`) |

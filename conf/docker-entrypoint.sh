@@ -9,9 +9,24 @@ if [ -z "${APP_KEY:-}" ]; then
   exit 1
 fi
 
-if [ -z "${DATABASE_URL:-}" ] && [ -z "${DB_HOST:-}" ]; then
-  echo "ERROR: DATABASE_URL (or DB_HOST) is missing. Link your Render Postgres and set DB_CONNECTION=pgsql."
+# Render Postgres uses DATABASE_URL; Laravel 12 expects DB_URL
+if [ -n "${DATABASE_URL:-}" ] && [ -z "${DB_URL:-}" ]; then
+  export DB_URL="$DATABASE_URL"
+  echo "==> Mapped DATABASE_URL -> DB_URL"
+fi
+
+if [ -z "${DB_URL:-}" ] && { [ -z "${DB_HOST:-}" ] || [ "${DB_HOST}" = "127.0.0.1" ] || [ "${DB_HOST}" = "localhost" ]; }; then
+  echo "ERROR: No remote database configured."
+  echo "Create Render Postgres, then set:"
+  echo "  DB_CONNECTION=pgsql"
+  echo "  DB_URL=<Internal Database URL from Postgres>"
+  echo "Do NOT set DB_HOST=127.0.0.1 on Render."
   exit 1
+fi
+
+# Prefer URL connection over leftover localhost defaults
+if [ -n "${DB_URL:-}" ]; then
+  unset DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD || true
 fi
 
 # Render free services expect the process to listen on $PORT
