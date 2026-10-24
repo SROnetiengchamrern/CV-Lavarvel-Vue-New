@@ -86,6 +86,32 @@ Preview: `http://127.0.0.1:8000/?layout=horizon`
 | Special Interests | Hobbies |
 | References | People & phone numbers |
 
+## Free hosting (Render)
+
+Railway sign-ups may be blocked — use **[Render](https://render.com)** free instead.
+
+1. Push this repo to GitHub (include the `Dockerfile` / `conf/` / `scripts/` files).
+2. Sign up at [render.com](https://render.com) with GitHub.
+3. **New → Postgres** → plan **Free** → create. Copy the **Internal Database URL**.
+4. **New → Web Service** → connect this repo → **Docker** → instance type **Free**.
+5. Environment variables:
+
+| Key | Value |
+|-----|--------|
+| `APP_KEY` | output of `php artisan key:generate --show` (run locally) |
+| `APP_ENV` | `production` |
+| `APP_DEBUG` | `false` |
+| `APP_URL` | your Render URL (set after first deploy, then redeploy) |
+| `DB_CONNECTION` | `pgsql` |
+| `DATABASE_URL` | Internal Database URL from step 3 |
+| `LOG_CHANNEL` | `stderr` |
+| `SESSION_DRIVER` | `database` |
+| `RUN_SEEDERS` | `true` (first deploy only; then set `false`) |
+
+6. Deploy → open the `.onrender.com` URL → change the admin password.
+
+**Note:** Free web services sleep after ~15 minutes idle (first load can take ~1 minute). Uploaded photos/PDFs can be lost on restart on free disk — re-upload in admin if needed.
+
 ## Profile photo
 
 Upload in **Admin → Personal & Contact**, or place a file at `public/images/profile.jpg`.
