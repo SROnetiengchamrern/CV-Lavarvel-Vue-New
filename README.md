@@ -107,7 +107,8 @@ Railway sign-ups may be blocked — use **[Render](https://render.com)** free in
 | *(optional)* `DATABASE_URL` | same as `DB_URL` — both work |
 | `LOG_CHANNEL` | `stderr` |
 | `SESSION_DRIVER` | `database` |
-| `RUN_SEEDERS` | `true` (first deploy only; then set `false`) |
+| `IMPORT_SQL` | `true` (first deploy — loads `database/chamrern_cv.sql`; then set `false`) |
+| `RUN_SEEDERS` | `false` (only if you are not using the SQL dump) |
 
 6. Deploy → open the `.onrender.com` URL → change the admin password.
 

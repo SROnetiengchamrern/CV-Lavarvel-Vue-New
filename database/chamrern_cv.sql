@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2026 at 10:20 AM
+-- Generation Time: Oct 24, 2026 at 07:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -346,7 +346,7 @@ CREATE TABLE `languages` (
 
 INSERT INTO `languages` (`id`, `name`, `name_km`, `level`, `sort_order`, `created_at`, `updated_at`) VALUES
 (9, 'Khmer', 'ខ្មែរ', 10, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(10, 'English', 'អង់គ្លេស', 4, 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03');
+(10, 'English', 'អង់គ្លេស', 5, 1, '2026-10-22 20:55:03', '2026-10-23 20:54:09');
 
 -- --------------------------------------------------------
 
@@ -468,7 +468,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('GvgzUChcMHTzWEeqJxjdujCTq9skWQGmcdBZzwPi', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiV0NrbXdKV0tpV1RKT1NWOVl2bjBmOGVEVGhHOEk4NjU5WWpwSlk1ZiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjY0OiI1ODhmZTk0ZDI5MWRkZDhiYzg1YWEzOWFjMDhjMTFlYjVkYjA1MzlmNGRhYmE5ZDUwMGVjYjFhYzI5NTc2YmRmIjt9', 1792743614);
+('7rpyWNmStU7Qkw4fGxK6J44pTbJpGOrPzzVjVD8K', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiZmtYR3c4VGltWG9aYUc0cDNGWkFkNnMxekhOM3Bpd3FTQ1dNRGhZUSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjY0OiI1ODhmZTk0ZDI5MWRkZDhiYzg1YWEzOWFjMDhjMTFlYjVkYjA1MzlmNGRhYmE5ZDUwMGVjYjFhYzI5NTc2YmRmIjtzOjY6ImxvY2FsZSI7czoyOiJlbiI7fQ==', 1792814555),
+('GvgzUChcMHTzWEeqJxjdujCTq9skWQGmcdBZzwPi', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiV0NrbXdKV0tpV1RKT1NWOVl2bjBmOGVEVGhHOEk4NjU5WWpwSlk1ZiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czoyOiJjdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjY0OiI1ODhmZTk0ZDI5MWRkZDhiYzg1YWEzOWFjMDhjMTFlYjVkYjA1MzlmNGRhYmE5ZDUwMGVjYjFhYzI5NTc2YmRmIjt9', 1792743614),
+('qCKUhmfRqBR533MKdPoKlEhaNubNzERHblAUieOs', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoialV2Wm5IeE9scUZmZXl4aVRVc0RjM2RLSkY0NjBCeExCV1pSbkUxTiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO3M6NToicm91dGUiO3M6MjoiY3YiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjY0OiI1ODhmZTk0ZDI5MWRkZDhiYzg1YWEzOWFjMDhjMTFlYjVkYjA1MzlmNGRhYmE5ZDUwMGVjYjFhYzI5NTc2YmRmIjtzOjY6ImxvY2FsZSI7czoyOiJlbiI7fQ==', 1792745381);
 
 -- --------------------------------------------------------
 
@@ -495,16 +497,16 @@ CREATE TABLE `skills` (
 INSERT INTO `skills` (`id`, `name`, `name_km`, `level`, `category`, `show_bar`, `sort_order`, `created_at`, `updated_at`) VALUES
 (153, 'CSS', NULL, 90, 'personal', 1, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
 (154, 'HTML', NULL, 92, 'personal', 1, 1, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(155, 'PHP', NULL, 88, 'personal', 1, 2, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(156, 'Laravel', NULL, 90, 'personal', 1, 3, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(157, 'Database', NULL, 85, 'personal', 1, 4, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
+(155, 'PHP', NULL, 80, 'personal', 1, 2, '2026-10-22 20:55:03', '2026-10-23 01:33:57'),
+(156, 'Laravel', NULL, 70, 'personal', 1, 3, '2026-10-22 20:55:03', '2026-10-23 01:37:37'),
+(157, 'Database', NULL, 70, 'personal', 1, 4, '2026-10-22 20:55:03', '2026-10-23 01:38:17'),
 (158, 'Javascript', NULL, 88, 'personal', 1, 5, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(159, 'WordPress', NULL, 80, 'personal', 1, 6, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(160, 'Joomla', NULL, 75, 'personal', 1, 7, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
+(159, 'WordPress', NULL, 80, 'personal', 0, 6, '2026-10-22 20:55:03', '2026-10-23 01:34:37'),
+(160, 'Joomla', NULL, 75, 'personal', 0, 7, '2026-10-22 20:55:03', '2026-10-23 01:35:20'),
 (161, 'Bootstrap', NULL, 90, 'personal', 1, 8, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(162, 'Vue JS', NULL, 88, 'personal', 1, 9, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(163, 'React JS', NULL, 82, 'personal', 1, 10, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
-(164, 'Jquery', NULL, 85, 'personal', 1, 11, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
+(162, 'Vue JS', NULL, 65, 'personal', 1, 9, '2026-10-22 20:55:03', '2026-10-23 01:38:32'),
+(163, 'React JS', NULL, 68, 'personal', 1, 10, '2026-10-22 20:55:03', '2026-10-23 01:38:46'),
+(164, 'Jquery', NULL, 73, 'personal', 1, 11, '2026-10-22 20:55:03', '2026-10-23 01:39:11'),
 (165, 'HTML', NULL, 85, 'setec-institute-bachelor-degree', 0, 0, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
 (166, 'CSS', NULL, 85, 'setec-institute-bachelor-degree', 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
 (167, 'PHP', NULL, 85, 'setec-institute-bachelor-degree', 0, 2, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
@@ -526,11 +528,11 @@ INSERT INTO `skills` (`id`, `name`, `name_km`, `level`, `category`, `show_bar`, 
 (183, 'Navicat', NULL, 80, 'setec-institute-bachelor-degree', 0, 13, '2026-10-22 20:55:03', '2026-10-23 01:12:37'),
 (184, 'GitHub', NULL, 80, 'setec-institute-bachelor-degree', 0, 14, '2026-10-22 20:55:03', '2026-10-23 01:12:10'),
 (185, 'GitLab', NULL, 80, 'setec-institute-bachelor-degree', 0, 15, '2026-10-22 20:55:03', '2026-10-23 01:12:05'),
-(186, 'Vue JS', NULL, 85, 'master-it-school', 0, 0, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
-(187, 'Quasar', NULL, 85, 'master-it-school', 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
-(188, 'JavaScript', NULL, 85, 'master-it-school', 0, 2, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
-(189, 'BootStrap', NULL, 85, 'master-it-school', 0, 3, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
-(190, 'Dynamic Website', NULL, 85, 'master-it-school', 0, 4, '2026-10-22 20:55:03', '2026-10-23 01:10:34'),
+(186, 'Vue JS', NULL, 85, 'master-it-school-course', 0, 0, '2026-10-22 20:55:03', '2026-10-23 21:02:26'),
+(187, 'Quasar', NULL, 85, 'master-it-school-course', 0, 1, '2026-10-22 20:55:03', '2026-10-23 21:02:26'),
+(188, 'JavaScript', NULL, 85, 'master-it-school-course', 0, 2, '2026-10-22 20:55:03', '2026-10-23 21:02:26'),
+(189, 'BootStrap', NULL, 85, 'master-it-school-course', 0, 3, '2026-10-22 20:55:03', '2026-10-23 21:02:26'),
+(190, 'Dynamic Website', NULL, 85, 'master-it-school-course', 0, 4, '2026-10-22 20:55:03', '2026-10-23 21:02:26'),
 (191, 'Docker', NULL, 80, 'setec-institute-bachelor-degree', 0, 16, '2026-10-23 01:13:25', '2026-10-23 01:13:25'),
 (192, 'Homan Resource Management', NULL, 80, 'setec-institute-masters-degree', 0, 1, '2026-10-23 01:17:10', '2026-10-23 01:17:10'),
 (193, 'Business Statestics', NULL, 80, 'setec-institute-masters-degree', 0, 2, '2026-10-23 01:17:19', '2026-10-23 01:17:19'),
@@ -578,7 +580,7 @@ CREATE TABLE `skill_categories` (
 INSERT INTO `skill_categories` (`id`, `name`, `name_km`, `slug`, `section`, `section_km`, `show_bars`, `accent`, `sort_order`, `created_at`, `updated_at`) VALUES
 (14, 'Personal Skills', 'ជំនាញផ្ទាល់ខ្លួន', 'personal', 'Skills', 'ជំនាញ', 1, 0, 0, '2026-10-22 20:55:03', '2026-10-22 20:55:03'),
 (15, 'SETEC Institute (Bachelor Degree)', 'វិទ្យាស្ថានស៊ីតិកថ្នាក់បរិញ្ញាបត្រ', 'setec-institute-bachelor-degree', 'Skills', 'ជំនាញ', 0, 0, 1, '2026-10-22 20:55:03', '2026-10-23 01:09:53'),
-(17, 'Master IT School', 'សាលា Master IT', 'master-it-school', 'Skills', 'ជំនាញ', 0, 1, 3, '2026-10-22 20:55:03', '2026-10-23 01:15:32'),
+(17, 'Master IT School (Course)', 'សាលា Master IT', 'master-it-school-course', 'Skills', 'ជំនាញ', 0, 1, 3, '2026-10-22 20:55:03', '2026-10-23 21:02:26'),
 (18, 'SETEC Institute (Master\'s Degree)', 'វិទ្យាស្ថានស៊ីតិកថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់', 'setec-institute-masters-degree', 'Skills', NULL, 0, 0, 2, '2026-10-23 01:10:23', '2026-10-23 01:10:45');
 
 -- --------------------------------------------------------

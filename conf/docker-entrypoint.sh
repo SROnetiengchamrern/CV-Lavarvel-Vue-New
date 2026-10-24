@@ -5,7 +5,22 @@ cd /app
 
 echo "==> Startup checks"
 if [ -z "${APP_KEY:-}" ]; then
-  echo "ERROR: APP_KEY is missing. Set it in Render Environment (php artisan key:generate --show)."
+  echo "ERROR: APP_KEY is missing. Set it in Render Environment."
+  echo "Run locally: php artisan key:generate --show"
+  echo "Paste the FULL value, including the base64: prefix. No quotes."
+  exit 1
+fi
+
+# Strip accidental quotes from Render dashboard paste
+APP_KEY="${APP_KEY%\"}"
+APP_KEY="${APP_KEY#\"}"
+APP_KEY="${APP_KEY%\'}"
+APP_KEY="${APP_KEY#\'}"
+export APP_KEY
+
+if [[ ! "$APP_KEY" =~ ^base64: ]]; then
+  echo "ERROR: APP_KEY must start with base64: (got: ${APP_KEY:0:20}...)"
+  echo "Run locally: php artisan key:generate --show"
   exit 1
 fi
 
@@ -58,7 +73,11 @@ php artisan view:cache
 echo "==> Migrate database"
 php artisan migrate --force
 
-if [ "${RUN_SEEDERS:-false}" = "true" ]; then
+# Prefer real dump data over generic seeders
+if [ "${IMPORT_SQL:-true}" = "true" ] && [ -f database/chamrern_cv.sql ]; then
+  echo "==> Import database/chamrern_cv.sql"
+  php artisan cv:import-sql --force
+elif [ "${RUN_SEEDERS:-false}" = "true" ]; then
   echo "==> Seed database"
   php artisan db:seed --force
 fi
