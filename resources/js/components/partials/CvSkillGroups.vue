@@ -66,7 +66,8 @@ function sectionIcon(section) {
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--cv-muted, rgba(255,255,255,0.8));
+    /* Follow each layout theme (gold on Emerald, blue on Classic, etc.) */
+    color: var(--cv-accent, #7ec8e8);
 }
 .sub.accent {
     display: inline-block;
