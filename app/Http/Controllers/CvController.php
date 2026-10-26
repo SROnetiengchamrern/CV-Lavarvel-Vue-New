@@ -57,10 +57,16 @@ class CvController extends Controller
     {
         $file = CvFile::active();
 
-        if (! $file || ! $file->file_path || ! Storage::disk('public')->exists($file->file_path)) {
-            return null;
+        // Prefer uploaded file when it still exists on disk
+        if ($file?->file_path && Storage::disk('public')->exists($file->file_path)) {
+            return route('cv.download');
         }
 
-        return route('cv.download');
+        // Fallback PDF shipped in public/ (survives Render free redeploys)
+        if (is_file(public_path('cv/Tieng-Chamrern.pdf'))) {
+            return asset('cv/Tieng-Chamrern.pdf');
+        }
+
+        return null;
     }
 }
